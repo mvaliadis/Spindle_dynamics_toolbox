@@ -26,7 +26,7 @@ Sleep spindles are cortical electrical waveforms observed during sleep, consider
 
 Using a rigorous statistical framework, we demonstrate that short-term timing patterns are the dominant determinant of spindle timing, whereas sleep depth, cortical up/down-state, and long-term (infraslow) pattern, features which are primary drivers of spindle occurrence, are less important. We also show that these short-term timing patterns are fingerprint-like and show increased variability over age. This study provides a new lens on spindle production mechanisms, which will allow studies of the role of spindle timing patterns in memory consolidation, aging, and disease.
 
-Here, we present a comprehensive code toolbox designed to guide users step by step through the entire process. From handling raw sleep EEG EDF files to constructing model inputs, fitting models, generating outputs, visualizing results, and evaluating model goodness-of-fit, this toolbox allows researchers to streamline workflows, ensure reproducibility, and apply or adapt it to diverse datasets for broader applications.
+Here, we present a comprehensive code toolbox to guide users step by step. From handling raw sleep EEG EDF files to constructing model inputs, fitting models, generating outputs, visualizing results, and evaluating model goodness-of-fit, this toolbox allows researchers to streamline workflows, ensure reproducibility, and apply or adapt it to diverse datasets for broader applications.
 
 
 ## Motivation: Spindles As A Point Process
@@ -55,7 +55,9 @@ which should be cited for academic use of this code.
 
 ## Status
 
-All implementations are functional, but are subject to refine. Next optimization, deal with perfect predictors (e.g., Wake and REM stage) to save runtime.
+All implementations are functional, but are subject to refine. 
+<br/>
+Next optimization, deal with perfect predictors (e.g., Wake and REM stage) to save runtime.
 <br/>
 Last updated by SC, 12/30/2024
 
