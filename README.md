@@ -7,7 +7,7 @@ This is the toolbox repository accompanying the spindle temporal dynamics paper 
 
 ## Table of Contents
 * [Background and Toolbox Overview](#background-and-toolbox-overview)
-* [Motivation: Spindles As A Point Process](#motivation:spindles-as-a-point-process)
+* [Motivation: Spindles As A Point Process](#motivation-spindles-as-a-point-process)
 * [Quick Start](#quick-start)
 * [Model Results And Visualizations](#model-results-and-visualizations)
 * [Documentation](#documentation)
