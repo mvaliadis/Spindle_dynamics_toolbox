@@ -2,7 +2,7 @@
 This is the toolbox repository accompanying the spindle temporal dynamics paper (Chen et al., PNAS, 2025).
 ### This is the repository for the code referenced in: 
 > Shuqiang Chen, Mingjian He, Ritchie E. Brown, Uri T. Eden, and Michael J. Prerau*. Individualized temporal patterns drive human sleep spindle timing, PNAS, 2025.
-% https://doi.org/10.1093/sleep/zsac189
+%
 --- 
 
 ## Table of Contents
@@ -46,7 +46,7 @@ Here, we present a comprehensive code toolbox designed to guide users step by st
 
 ## Citations
 The code contained in this repository is companion to the paper:  
->  Shuqiang Chen, Mingjian He, Ritchie E. Brown, Uri T. Eden, and Michael J. Prerau*. Individualized temporal patterns drive human sleep spindle timing, PNAS, 2025,
+>  Shuqiang Chen, Mingjian He, Ritchie E. Brown, Uri T. Eden, and Michael J. Prerau*. Individualized temporal patterns drive human sleep spindle timing, PNAS, 2025.
 %
 which should be cited for academic use of this code.  
 
