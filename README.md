@@ -7,7 +7,6 @@ This is the toolbox repository accompanying the spindle temporal dynamics paper 
 
 ## Table of Contents
 * [Background and Toolbox Overview](#background-and-toolbox-overview)
-* [Motivation: Spindles As A Point Process](#motivation-spindles-as-a-point-process)
 * [Quick Start](#quick-start)
 * [Model Results And Visualizations](#model-results-and-visualizations)
 * [Documentation](#documentation)
@@ -25,8 +24,6 @@ Using a rigorous statistical framework, we demonstrate that short-term timing pa
 
 Here, we present a comprehensive code toolbox to guide users step by step. From handling raw sleep EEG EDF files to constructing model inputs, fitting models, generating outputs, visualizing results, and evaluating model goodness-of-fit, this toolbox allows researchers to streamline workflows, ensure reproducibility, and apply or adapt it to diverse datasets for broader applications.
 
-
-## Motivation: Spindles As A Point Process
 
 
 ## Quick Start
