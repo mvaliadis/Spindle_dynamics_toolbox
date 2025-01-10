@@ -1,6 +1,6 @@
 # Spindle_dynamics_toolbox
 This is the toolbox repository accompanying the spindle temporal dynamics paper (Chen et al., PNAS, 2025).
-### This is the repository for the code referenced in: 
+### Please cite the following paper when using this toolbox
 > Shuqiang Chen, Mingjian He, Ritchie E. Brown, Uri T. Eden, and Michael J. Prerau*. Individualized temporal patterns drive human sleep spindle timing, Proc. Natl. Acad. Sci. U.S.A.
 122 (2) e2405276121, https://doi.org/10.1073/pnas.2405276121 (2025).
 --- 
@@ -27,6 +27,8 @@ Here, we present a comprehensive code toolbox to guide users step by step. From 
 
 
 ## Quick Start
+We apply this toolbox to the [example subject](https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data1) from MESA dataset (the same subject as in Figure 6 from the paper). This quick start allows you to load the raw EEG data, preprocess and extract spindle events, run the model, output and visualize the results, and evaluate goodness-of-fit. 
+
 
 
 ## Model Results And Visualizations
