@@ -27,7 +27,7 @@ Here, we present a comprehensive code toolbox to guide users step by step. From 
 
 
 ## Quick Start
-We apply this toolbox to the [example subject](https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data1) from MESA dataset (the same subject as in Figure 6 from the paper). This quick start allows you to load the raw EEG data, preprocess and extract spindle events, run the model, output and visualize the results, and evaluate goodness-of-fit. 
+We apply this toolbox to the [example subject](https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data) from MESA dataset (the same subject as in Figure 6 from the paper). This quick start allows you to load the raw EEG data, preprocess and extract spindle events, run the model, output and visualize the results, and evaluate goodness-of-fit. 
 
 
 
