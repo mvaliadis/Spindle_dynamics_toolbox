@@ -31,6 +31,13 @@ We apply this toolbox to the [example subject](https://github.com/preraulab/Spin
 
 
 
+<p align="center">
+
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig1.jpg" width="900" />
+</p> 
+
+
+
 ## Model Results And Visualizations
 
 
