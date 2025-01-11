@@ -48,17 +48,42 @@ To generate all the figures provided in this tutorial, execute the example scrip
 ## Model Results And Visualizations
 
 ### History Modulation Curve 
-Describe the history dependence results here. You can include visualizations, figures, or detailed explanations of the results.
+Describe the history dependence results here. Include visualizations, figures, or detailed explanations of the results.
+
+
 
 ### Spindle Preferential SO Phase Shifts With Sleep Depth
-Provide details about the phase shift analysis, including any relevant figures or discussions about observed patterns and their implications.
+XXXX.
+
+<p align="center">
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/ppshift_fig2.png" width="900" />
+</p> 
+<p align="center">
+  <b>Figure 2: Phase Shift: Stage vs. SO Power </b>
+</p>
 
 ### Model With History Greatly Improves Model Performance
 
-An example script is provided in the repository that takes an excerpt of a single channel of example sleep EEG data and runs the TF-peak detection watershed algorithm and the SO-power and SO-phase analyses, plotting the resulting hypnogram, spectrogram, TF-peak scatterplot, SO-power histogram, and SO-phase histogram (shown below).
+KS here
+
+<p align="center">
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/ks_fig3.png" width="900" />
+</p> 
+<p align="center">
+  <b>Figure 3: KS plot for different models </b>
+</p>
 
 ### Short-term History Contributes Most Statistical Deviance, Suparssing Other Factors
-XXX
+Table here
+
+<p align="center">
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/dev_exp_fig4.png" width="400" />
+</p> 
+<p align="center">
+  <b>Figure 4: Proportional Deviance Explained By Different Factors </b>
+</p>
+
+
 
 ## Documentation
 
@@ -68,9 +93,10 @@ XXX
 
 ## Citations
 The code contained in this repository is companion to the paper:  
->  Shuqiang Chen, Mingjian He, Ritchie E. Brown, Uri T. Eden, and Michael J. Prerau*. Individualized temporal patterns drive human sleep spindle timing, PNAS, 2025.
-%
-which should be cited for academic use of this code.  
+>  Shuqiang Chen, Mingjian He, Ritchie E. Brown, Uri T. Eden, and Michael J. Prerau*. Individualized temporal patterns drive human sleep spindle timing, Proc. Natl. Acad. Sci. U.S.A.
+122 (2) e2405276121, https://doi.org/10.1073/pnas.2405276121 (2025).
+
+which should be cited for all use.  
 
 <br/>
 <br/>
