@@ -35,19 +35,30 @@ After installing the package, execute the "Quick Start" section in the example s
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig1.png" width="900" />
 </p> 
 <p align="center">
-  <em>Figure 1: Overview of the spindle dynamics </em>
+  <b>Figure 1: Overview of the spindle dynamics </b>
 </p>
 
+Use the scrollzoompan interface to slide and play around with the figure. To view the exact figure, set **Zoom** to be **90** and **Pan** to be **30145**.
+
+To generate all the figures provided in this tutorial, execute the example script:
 ``` matlab
-% After installing the package, execute the "Quick Start" section in the example script
  > example_script;
 ```
 
-
 ## Model Results And Visualizations
+
+### History Modulation Curve 
+Describe the history dependence results here. You can include visualizations, figures, or detailed explanations of the results.
+
+### Spindle Preferential SO Phase Shifts With Sleep Depth
+Provide details about the phase shift analysis, including any relevant figures or discussions about observed patterns and their implications.
+
+### Model With History Greatly Improves Model Performance
 
 An example script is provided in the repository that takes an excerpt of a single channel of example sleep EEG data and runs the TF-peak detection watershed algorithm and the SO-power and SO-phase analyses, plotting the resulting hypnogram, spectrogram, TF-peak scatterplot, SO-power histogram, and SO-phase histogram (shown below).
 
+### Short-term History Contributes Most Statistical Deviance, Suparssing Other Factors
+XXX
 
 ## Documentation
 
