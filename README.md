@@ -32,10 +32,10 @@ We apply this toolbox to one [example subject](https://github.com/preraulab/Spin
 After installing the package, execute the "Quick Start" section in the example script, the following figure should be generated:
 
 <p align="center">
-<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig1.png" width="900" />
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig.png" width="900" />
 </p> 
 <p align="center">
-  <b>Figure 1: Overview of the spindle dynamics </b>
+  <b> Overview of the spindle dynamics </b>
 </p>
 
 Use the scrollzoompan interface to slide and play around with the figure. To view the exact figure, set **Zoom** to be **90** and **Pan** to be **30145**.
@@ -49,7 +49,12 @@ To generate all the figures provided in this tutorial, execute the example scrip
 
 ### History Modulation Curve 
 Describe the history dependence results here. Include visualizations, figures, or detailed explanations of the results.
-
+<p align="center">
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/hist_fig1.png" width="900" />
+</p> 
+<p align="center">
+  <b>Figure 1: History Modulation Curve </b>
+</p>
 
 
 ### Spindle Preferential SO Phase Shifts With Sleep Depth
