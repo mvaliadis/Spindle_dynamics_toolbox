@@ -31,16 +31,17 @@ We apply this toolbox to one [example subject](https://github.com/preraulab/Spin
 
 After installing the package, execute the "Quick Start" section in the example script, the following figure should be generated:
 
+<p align="center">
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig1.png" width="900" />
+</p> 
+<p align="center">
+  <em>Figure 1: Overview of the spindle dynamics </em>
+</p>
+
 ``` matlab
 % After installing the package, execute the "Quick Start" section in the example script
  > example_script;
 ```
-
-<p align="center">
-
-<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig1.png" width="900" />
-</p> 
-
 
 
 ## Model Results And Visualizations
