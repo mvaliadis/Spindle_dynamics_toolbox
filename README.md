@@ -22,7 +22,7 @@ Sleep spindles are cortical electrical waveforms observed during sleep, consider
 
 Using a rigorous statistical framework, we demonstrate that short-term timing patterns are the dominant determinant of spindle timing, whereas sleep depth, cortical up/down-state, and long-term (infraslow) pattern, features which are primary drivers of spindle occurrence, are less important. We also show that these short-term timing patterns are fingerprint-like and show increased variability over age. This study provides a new lens on spindle production mechanisms, which will allow studies of the role of spindle timing patterns in memory consolidation, aging, and disease.
 
-#### Herein, we provide this code toolbox to characterize instantaneous spindle temporal dynamics as influenced by various factors, including sleep stage/depth (SO Power), cortical up/down states (SO Phase), and past history of spindles. 
+#### Here, we provide this code toolbox to characterize instantaneous spindle temporal dynamics as influenced by various factors, including sleep stage/depth (SO Power), cortical up/down states (SO Phase), and past history of spindles. 
 
 Designed as a user-friendly toolbox, it offers a step-by-step workflow — from raw sleep EEG data to model outputs and visualizations. Users can use the example data or provide their own EEG data, to specify model factors, add interactions between factors, and customize settings to address specific scientific questions. We hope this toolbox streamlines workflows, ensures reproducibility, and inspires researchers to adapt it to diverse datasets for broader applications.
 
@@ -30,6 +30,12 @@ Designed as a user-friendly toolbox, it offers a step-by-step workflow — from 
 We apply this toolbox to one [example subject](https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data) from the MESA dataset (the same subject as in Figure 6 from the paper). This quick start guides users through loading raw EEG data, preprocessing, extracting spindle events and their features, as well as SO features. It then runs the model, generates outputs, and visualizes an overview figure with an interactive interface for users to explore (shown below).
 
 After installing the package, execute the "Quick Start" section in the example script, the following figure should be generated:
+
+``` matlab
+% After installing the package, execute the "Quick Start" section in the example script
+ > example_script;
+```
+
 <p align="center">
 
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig1.png" width="900" />
