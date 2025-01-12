@@ -41,10 +41,8 @@ Using a rigorous statistical framework, we demonstrate that short-term timing pa
 
 <h3>Toolbox Overview</h3>
 <p>
-    This code toolbox is designed to characterize <strong>instantaneous spindle temporal dynamics</strong> as influenced by various factors, including sleep stage/depth (SO Power), cortical up/down states (SO phase), and past history of spindles.
+    This code toolbox is designed to provide an integrated approach to characterizing <strong>instantaneous spindle temporal dynamics</strong> influenced by multiple factors, including sleep stage/depth (SO Power), cortical up/down states (SO Phase), and the past history of spindles. It consists of <strong>two major components:</strong>
 </p>
-
-<p>The toolbox consists of <strong>two major components:</strong></p>
 
 <h4>1. Quick Start GUI</h4>
 <ul>
@@ -79,23 +77,29 @@ Using a rigorous statistical framework, we demonstrate that short-term timing pa
 </ul>
 
 
-
 ## Quick Start
-We apply this toolbox to one [example subject](https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data) from the MESA dataset (the same subject as in Figure 6 from the paper). This quick start guides users through loading raw EEG data, preprocessing, extracting spindle events and their features, as well as SO features. It then runs the model, generates outputs, and visualizes an overview figure with an interactive interface for users to explore (shown below).
-
-After installing the package, execute the "quick_start" function, 
+After installing the package, execute the "quick_start" GUI function to get started
 
 ``` matlab
  > quick_start;
 ```
 
-The following GUI should be generated:
+The following GUI should be generated (shown below, left panel):
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/quick_start.png" width="400" />
 </p> 
 
-Choose XXXX, the following overview figure should be generated:
+Let's follow the 4 steps to make the choices. Here, we provide an example of the settings (above, right panel), which specifies the model we primarily used in the paper:
+
+<ol>
+    <li>Load data: Load <a href="https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data" target="_blank">Example Data</a>, which is the same <a href="https://www.sleepdata.org/datasets/mesa" target="_blank">MESA</a> subject as in Figure 6 from the paper.</li>
+    <li>Select factors: Click on "Stage", "SOphase","History". </li>
+    <li>Choose history: Click on "Long-term (90 sec)"</li>
+    <li>Select interactions: Choose "stage:SOphase interaction"</li>
+</ol>
+
+One you click on "Run the Model" button, an overview figure with an interactive interface will be generated for users to explore (shown below):
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig.png" width="900" />
@@ -104,10 +108,14 @@ Choose XXXX, the following overview figure should be generated:
   <b> Overview of the spindle dynamics </b>
 </p>
 
-Use the scrollzoompan interface to slide and play around with the figure. To view the exact figure, set **Zoom** to be **90** and **Pan** to be **30145**.
+Use the scrollzoompan interface to slide and play around with the figure. To view the exact same epoch, set **Zoom** to be **90** and **Pan** to be **30145**.
+
+Note: You can also load your own data, once you click on "Load User Data", it allows you to browse and load your own data. Here's a few requirements for the data file:
 
 
 ## Model Results And Visualizations
+This quick start guides users through loading raw EEG data, preprocessing, extracting spindle events and their features, as well as SO features. It then runs the model, generates outputs, and visualizes an overview figure with an interactive interface for users to explore (shown below). 
+
 We will go through the major functions in each section, but if you would like to one-click to generate all figures provided in this section, execute the example script:
 ``` matlab
  > example_script;
