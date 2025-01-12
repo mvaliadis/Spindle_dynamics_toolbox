@@ -99,7 +99,7 @@ Let's follow the 4 steps to make the choices. Here, we provide an example of the
     <li>Select interactions: Choose "stage:SOphase interaction"</li>
 </ol>
 
-One you click on "Run the Model" button, an overview figure with an interactive interface will be generated for users to explore (shown below):
+Once you clicked on "Run the Model" button, an overview figure with an interactive interface will be generated for users to explore (shown below):
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig.png" width="900" />
