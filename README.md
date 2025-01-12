@@ -29,7 +29,19 @@ Designed as a user-friendly toolbox, it offers a step-by-step workflow — from 
 ## Quick Start
 We apply this toolbox to one [example subject](https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data) from the MESA dataset (the same subject as in Figure 6 from the paper). This quick start guides users through loading raw EEG data, preprocessing, extracting spindle events and their features, as well as SO features. It then runs the model, generates outputs, and visualizes an overview figure with an interactive interface for users to explore (shown below).
 
-After installing the package, execute the "Quick Start" section in the example script, the following figure should be generated:
+After installing the package, execute the "quick_start" function, 
+
+``` matlab
+ > quick_start;
+```
+
+The following GUI should be generated:
+
+<p align="center">
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/quick_start.png" width="400" />
+</p> 
+
+Choose XXXX, the following overview figure should be generated:
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig.png" width="900" />
@@ -40,12 +52,13 @@ After installing the package, execute the "Quick Start" section in the example s
 
 Use the scrollzoompan interface to slide and play around with the figure. To view the exact figure, set **Zoom** to be **90** and **Pan** to be **30145**.
 
-To generate all the figures provided in this tutorial, execute the example script:
+
+## Model Results And Visualizations
+We will go through the major functions in each section, but if you would like to one-click to generate all figures provided in this section, execute the example script:
 ``` matlab
  > example_script;
 ```
 
-## Model Results And Visualizations
 
 ### History Modulation Curve 
 Describe the history dependence results here. Include visualizations, figures, or detailed explanations of the results.
