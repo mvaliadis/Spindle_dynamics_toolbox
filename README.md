@@ -190,6 +190,27 @@ The modeling framework allows us to quantitatively compare the relative contribu
 
 
 ## Repository Structure
+The contents of the "toolbox" folder is organized as follows, with key functions:
+
+```
+.REPO_ROOT
+├── quick_start.m:         Quick start GUI to generate an overview figure to allow users to explore
+├── Example_Script.m:      Main script to walk through main results step by step, from raw data to model results and visulizations
+│                          Uses example data contained in example_data folder.│   
+├── example_data/  Contains example data
+├── image_folder/  Contains all saved figures
+└── helper_function/  Contains all functions
+    ├── major_fxn/   
+    │         - xxx.m: xxx
+    ├── GUI_fxn/   
+    │         - xxx.m
+    ├── TFsigma_peak_detector/
+    │         - xxx.m
+    ├── helper_fxn/
+    │         - xxx.m
+    └── helper_functions/
+              - Contains various utility functions for spectral estimation and plotting
+```
 
 
 ## Citations
