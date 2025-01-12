@@ -99,7 +99,7 @@ Let's follow the 4 steps to make the choices. Here, we provide an example of the
     <li>Select interactions: Choose "stage:SOphase interaction"</li>
 </ol>
 
-Once you clicked on "Run the Model" button, an overview figure with an interactive interface will be generated for users to explore (shown below):
+Once you clicked on "Run the Model" button, an overview figure will be generated for users to explore (shown below):
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig.png" width="900" />
@@ -114,16 +114,16 @@ Note: You can also load your own data, once you click on "Load User Data", it al
 
 
 ## Model Results And Visualizations
-This quick start guides users through loading raw EEG data, preprocessing, extracting spindle events and their features, as well as SO features. It then runs the model, generates outputs, and visualizes an overview figure with an interactive interface for users to explore (shown below). 
+In this section, we will walk through the example script, highlighting the major functions. If you would like to generate all figures with a single click, simply execute the example script:
 
-We will go through the major functions in each section, but if you would like to one-click to generate all figures provided in this section, execute the example script:
 ``` matlab
  > example_script;
 ```
 
 
 ### History Modulation Curve 
-Describe the history dependence results here. Include visualizations, figures, or detailed explanations of the results.
+The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/plot_hist_curve.m) function to generate the history modulation curve and save results.
+
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/hist_fig1.png" width="900" />
 </p> 
