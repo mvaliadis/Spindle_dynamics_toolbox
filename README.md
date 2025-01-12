@@ -133,7 +133,7 @@ The history modulation curve estimates a multiplicative modulation of the spindl
 
 
 ### Spindle Preferential SO Phase Shifts With Sleep Depth
-XXXX.
+Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep stage. 
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/ppshift_fig2.png" width="900" />
@@ -144,13 +144,13 @@ XXXX.
 
 ### Model With History Greatly Improves Model Performance
 
-KS here
+If the model is correct, the time-rescaling theorem can be used to remap the event times into a homogenous Poisson process. After rescaling, Kolmogorov-Smirnov (KS) plots can be used to compare the distribution of inter-spindle-intervals to those predicted by the model. A well-fit model will produce a KS plot that closely follows a 45-degree line and stays within its significance bounds (black). KS plots that are not contained in these bounds (red) suggest lack-of-fit in the model. Use the [KSplot.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/KSplot.m) function to generate the KS plot, compute KS statistics, and output KS test results.
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/ks_fig3.png" width="900" />
 </p> 
 <p align="center">
-  <b>Figure 3: KS plot for different models </b>
+  <b>Figure 3: KS plot for models with different components </b>
 </p>
 
 ### Short-term History Contributes Most Statistical Deviance, Suparssing Other Factors
