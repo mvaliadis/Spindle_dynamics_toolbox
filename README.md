@@ -5,6 +5,23 @@ This is the toolbox repository accompanying the spindle temporal dynamics paper 
 122 (2) e2405276121, https://doi.org/10.1073/pnas.2405276121 (2025).
 --- 
 
+## Initial Clone 
+
+To clone the Spindle_dynamics_toolbox.git repository to your own computer or remote work station, you can create an empty folder to contain the repository. 
+ 
+ ##### create an empty folder:
+	mkdir Spindle_dynamics_toolbox
+
+ ##### clone the repository to the folder you created:
+	git clone --recursive git@github.com:preraulab/Spindle_dynamics_toolbox.git Spindle_dynamics_toolbox
+
+ ##### set to master branch for all submodules:
+	git submodule foreach --recursive git checkout master
+ 
+ ##### to update submodules:
+	git submodule update --remote
+ --- 
+
 ## Table of Contents
 * [Background and Toolbox Overview](#background-and-toolbox-overview)
 * [Quick Start](#quick-start)
