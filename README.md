@@ -39,9 +39,46 @@ Sleep spindles are cortical electrical waveforms observed during sleep, consider
 
 Using a rigorous statistical framework, we demonstrate that short-term timing patterns are the dominant determinant of spindle timing, whereas sleep depth, cortical up/down-state, and long-term (infraslow) pattern, features which are primary drivers of spindle occurrence, are less important. We also show that these short-term timing patterns are fingerprint-like and show increased variability over age. This study provides a new lens on spindle production mechanisms, which will allow studies of the role of spindle timing patterns in memory consolidation, aging, and disease.
 
-#### Here, we provide this code toolbox to characterize instantaneous spindle temporal dynamics as influenced by various factors, including sleep stage/depth (SO Power), cortical up/down states (SO Phase), and past history of spindles. 
+<h3>Toolbox Overview</h3>
+<p>
+    This code toolbox is designed to characterize <strong>instantaneous spindle temporal dynamics</strong> as influenced by various factors, including sleep stage/depth (SO Power), cortical up/down states (SO phase), and past history of spindles.
+</p>
 
-Designed as a user-friendly toolbox, it offers a step-by-step workflow — from raw sleep EEG data to model outputs and visualizations. Users can use the example data or provide their own EEG data, to specify model factors, add interactions between factors, and customize settings to address specific scientific questions. We hope this toolbox streamlines workflows, ensures reproducibility, and inspires researchers to adapt it to diverse datasets for broader applications.
+<p>The toolbox consists of <strong>two major components:</strong></p>
+
+<h4>1. Quick Start GUI</h4>
+<ul>
+    <li>
+        Provides an interactive interface for users to:
+        <ul>
+            <li>Load example data or upload their own data.</li>
+            <li>Specify model factors and add interactions between them.</li>
+            <li>Customize settings to generate an overview figure for exploration.</li>
+        </ul>
+    </li>
+</ul>
+
+<h4>2. Step-by-Step Example Script</h4>
+<ul>
+    <li>
+        Offers researchers a detailed workflow to:
+        <ul>
+            <li>Dive into the toolbox's functionalities.</li>
+            <li>Address specific scientific questions using example data or their own data.</li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+    Designed as a user-friendly toolbox, we aim to:
+</p>
+<ul>
+    <li>Streamline research workflows.</li>
+    <li>Ensure reproducibility.</li>
+    <li>Inspire researchers to apply and adapt it to diverse datasets for broader applications.</li>
+</ul>
+
+
 
 ## Quick Start
 We apply this toolbox to one [example subject](https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data) from the MESA dataset (the same subject as in Figure 6 from the paper). This quick start guides users through loading raw EEG data, preprocessing, extracting spindle events and their features, as well as SO features. It then runs the model, generates outputs, and visualizes an overview figure with an interactive interface for users to explore (shown below).
