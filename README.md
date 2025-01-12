@@ -78,7 +78,7 @@ Using a rigorous statistical framework, we demonstrate that short-term timing pa
 
 
 ## Quick Start
-After installing the package, execute the "quick_start" GUI function to get started
+After installing the package, execute the "quick_start" GUI function in the command line to get started
 
 ``` matlab
  > quick_start;
@@ -124,6 +124,10 @@ In this section, we will walk through the example script, highlighting the major
 ### History Modulation Curve 
 The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/plot_hist_curve.m) function to generate the history modulation curve and save results.
 
+``` matlab
+  plot_hist_curve(XXX)
+```
+
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/hist_fig1.png" width="900" />
 </p> 
@@ -134,6 +138,15 @@ The history modulation curve estimates a multiplicative modulation of the spindl
 
 ### Spindle Preferential SO Phase Shifts With Sleep Depth
 Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep stage. 
+
+``` matlab
+  plot_stage_prefphase(XXX)
+```
+
+``` matlab
+  plot_sop_prefphase(XXX)
+```
+
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/ppshift_fig2.png" width="900" />
@@ -146,6 +159,10 @@ Sleep spindles have been widely reported to preferentially occur in the cortical
 
 If the model is correct, the time-rescaling theorem can be used to remap the event times into a homogenous Poisson process. After rescaling, Kolmogorov-Smirnov (KS) plots can be used to compare the distribution of inter-spindle-intervals to those predicted by the model. A well-fit model will produce a KS plot that closely follows a 45-degree line and stays within its significance bounds (black). KS plots that are not contained in these bounds (red) suggest lack-of-fit in the model. Use the [KSplot.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/KSplot.m) function to generate the KS plot, compute KS statistics, and output KS test results.
 
+``` matlab
+  KSplot(XXX);
+```
+
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/ks_fig3.png" width="900" />
 </p> 
@@ -153,8 +170,12 @@ If the model is correct, the time-rescaling theorem can be used to remap the eve
   <b>Figure 3: KS plot for models with different components </b>
 </p>
 
-### Short-term History Contributes Most Statistical Deviance, Suparssing Other Factors
-Table here
+### Short-Term History Contributes the Most to Statistical Deviance, Surpassing Other Factors
+The modeling framework allows us to quantitatively compare the relative contributions of these factors through deviance analysis, which is the point process equivalent of an analysis of model variance in linear regression. Use the [compute_dev_exp.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/compute_dev_exp.m) function to compute proportional deviance explained by each factor.
+
+``` matlab
+  compute_dev_exp(XXX);
+```
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/dev_exp_fig4.png" width="400" />
