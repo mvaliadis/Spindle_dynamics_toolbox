@@ -108,5 +108,5 @@ BinData.spindletime_raw = spindletime_raw;
 BinData.isis = diff(spindletime_raw);
 BinData.N2_rate = N2_rate;
 BinData.N3_rate = N3_rate;
-
+BinData.Fs = Fs;
 end

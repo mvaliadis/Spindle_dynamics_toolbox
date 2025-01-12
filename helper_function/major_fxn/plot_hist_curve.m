@@ -31,7 +31,7 @@ xlag = (ModelSpec.binsize*sp_resol:ModelSpec.binsize*sp_resol:ModelSpec.hist_ord
 
     %% Evaluate history modulation curve
     %--- If single history curve is specified
-    if length(ModelSpec.InteractSelect)==1
+    if length(ModelSpec.InteractSelect)<=1
         sizediff = length(b)-1 - size(BinData.sp,2); % num of non-history columns in design matrix
         [yhat0,yl0,yu0] = glmval(b,[zeros(ModelSpec.hist_ord/sp_resol,sizediff) sp_finer],'log',stats);
         yl = (yhat0 - yl0)/exp(b(1));

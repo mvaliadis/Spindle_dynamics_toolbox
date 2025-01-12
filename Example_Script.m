@@ -72,7 +72,7 @@ warning('off', 'all');
 % Compute multitaper spectrogram
 dsfreqs = 0.1;
 nfft = 2^(nextpow2(Fs/dsfreqs));
-[mt, stimes, sfreqs] = multitaper_spectrogram_mex(EEG, Fs,[8,19],[2,3],[1,0.05],nfft,'constant',[],false);
+[mt, stimes, sfreqs] = multitaper_spectrogram_mex(EEG, Fs,[8,19],[2,3],[1,0.05],nfft,'constant',[],false,false);
 
 % Extract fast spindle raw time and freq
 fast_inds = (res_table.peak_freqs{:} >= hard_cutoffs(1)) & (res_table.peak_freqs{:}< hard_cutoffs(2));
