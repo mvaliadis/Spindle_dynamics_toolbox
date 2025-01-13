@@ -11,7 +11,7 @@ function [ks,ksT] = KSplot(CIF,y,ploton)
 %       - ksT: KS test result, 0 means pass the KS test
 %                              1 means fail to pass the KS test
 %
-% Updated SC,123024, 123124
+% Updated SC,123024
 %***********************************************************************************
 
 %%

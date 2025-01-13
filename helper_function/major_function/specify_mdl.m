@@ -28,7 +28,11 @@ function [ModelSpec] = specify_mdl(BinarySelect,InteractSelect,varargin)
 %            InteractSelect = {'stage:SOphase'};          
 %            [ModelSpec] = specify_mdl_factor(BinarySelect,InteractSelect);
 %
-% Accompanying with Chen et al., PNAS, 2025
+% Please provide the following citation for all use:
+%       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
+%       "Individualized Temporal Patterns Drive Human Sleep Spindle Timing"
+%       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
+%
 % Updated SChen 010725
 %***********************************************************************************
 

@@ -3,11 +3,16 @@ function [dev_exp_sta,dev_exp_sop] = compute_dev_exp(BinData)
 % By fitting a list of nested models, we can compute the relative contribution of 
 % each factor in modulating spindle dyanmics throught deviance analysis
 %
-% Input: BinData
+% Input: BinData (struct), all the binned data
 %       
 % Output: 
 %       - dev_exp_sta (double,1x3), deviance explained from [stage, phase, history]
 %       - dev_exp_sop (double,1x3), deviance explained from [SOP, phase, history]
+%
+% Please provide the following citation for all use:
+%       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
+%       "Individualized Temporal Patterns Drive Human Sleep Spindle Timing"
+%       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
 %
 % Created by SChen 010625
 %***********************************************************************************

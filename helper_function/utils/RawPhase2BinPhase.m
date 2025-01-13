@@ -1,12 +1,13 @@
 function [SO_phase] = RawPhase2BinPhase(phase_raw,Fs,spindletime_raw,spindletrain,domaindivide)
-%% Transform raw SO phase to align with binned spindle train
+%RAWPHASE2BINPHASE transforms raw SO phase to align with binned spindle train
 % s.t. SO phase is the exact value when spindle occurs
 %      SO phase is the cir_mean value when no spindles occurs
-%   Fs is the sampling freq of Raw phase, e.g. in MESA, SO: 256, resp: 32
-% SC 040924
+%   Fs is the sampling freq of the raw phase
+%
+% SChen 040924
 
 %% SO phase   
-%phase_raw = cell2mat(res_table.SOphase);                % SO phase raw
+
 phase_raw = unwrap(phase_raw);                          % unwrap the phase for taking avg
 phase_time_raw = 1/Fs:1/Fs:length(phase_raw)/Fs;        % phase time
 

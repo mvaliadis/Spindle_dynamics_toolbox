@@ -1,10 +1,19 @@
 function [Sp_adj] = FinerModCardinalSpline(ord,c_pt_times_all,s,spline_resol)
 %% Cardinal spline for non-uniform spacing
-% modified cardinal spline in finer resolution
+% modified cardinal spline in a finer resolution
+% Input: 
+%       -ord, (double): history order 
+%       -c_pt_times_all, (double, vector): knot locations
+%       -s, (double): tension parameter
+%       -spline_resol, (double): this determines spline resolution in evaluation
+% 
+% Ouput: 
+%       -Sp_adj(double,matrix), spline matrix in a finer resolution 
+%                              (in spindle_resol*binsize resolution)
 %
-% Input: ord, knot locations, tension parameter,spindle_resol (in spindle_resol*bin time resolution)
 % Updated by Shuqiang Chen, 10/17/22
 %************************************************************************************
+
 %%
 
 lastknot = ord;

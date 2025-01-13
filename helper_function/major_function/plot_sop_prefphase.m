@@ -2,7 +2,11 @@ function [] = plot_sop_prefphase(b,stats,ModelSpec)
 % PLOT_SOP_PREFPHASE plots preferred phase as a function of continuous SOP
 % Add outputs later
 %
-% Accompanying with Chen et al., PNAS, 2025
+% Please provide the following citation for all use:
+%       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
+%       "Individualized Temporal Patterns Drive Human Sleep Spindle Timing"
+%       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
+%
 % Created by SChen 010325
 %******************************************************************************************************************************************
 

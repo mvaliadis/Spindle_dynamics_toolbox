@@ -2,7 +2,11 @@ function [] = plot_stage_prefphase(b,stats,ModelSpec)
 % PLOT_STAGE_PREFPHASE generates a figure showing preferred phase in N1,N2, and N3 stage
 % Add outputs later
 %
-% Accompanying with Chen et al., PNAS, 2025
+% Please provide the following citation for all use:
+%       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
+%       "Individualized Temporal Patterns Drive Human Sleep Spindle Timing"
+%       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
+%
 % Created by SChen 123124, 
 %******************************************************************************************************************************************
 

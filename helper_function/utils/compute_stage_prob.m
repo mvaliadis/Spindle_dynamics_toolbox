@@ -1,5 +1,5 @@
 function [stage_prop,timestamps] = compute_stage_prob(stagetrain,sop,sop_bin_divide)
-%COMPUTE_STAGE_PROp Computes stage proportion
+%COMPUTE_STAGE_PROB computes % time in stage
 %
 %   Usage:
 %       stage_prop = compute_stage_prob(stage, sop, bin_divide)
@@ -21,14 +21,12 @@ function [stage_prop,timestamps] = compute_stage_prob(stagetrain,sop,sop_bin_div
 %% ********************************************************************
 
 %Compute the stage probability and components
-%sop_bin_divide = (min(sop):0.5:max(sop))';
 bin_size = sop_bin_divide(2) - sop_bin_divide(1);
 num_bins = length(sop_bin_divide);
 stage_prop = zeros(num_bins, 5);
 
 %Loop through each bin and get the associated stages
 for ii = 1:num_bins-1
-    %inds = bin_indices(ii);
     inds = sop>sop_bin_divide(ii)&sop<sop_bin_divide(ii+1);
     hist_vals = histcounts(stagetrain(inds),.5:1:5.5)'; %Create histogram bin edges that include 1:5
     stage_prop(ii,:) = hist_vals/sum(hist_vals); % N3,N2,N1,REM,Wake
@@ -36,4 +34,6 @@ end
 
 % The center of bin can be the timestamps to plot with SOP
 timestamps = sop_bin_divide + 0.5*bin_size;
-%timestamps = timestamps(1:end-1);
+
+
+end

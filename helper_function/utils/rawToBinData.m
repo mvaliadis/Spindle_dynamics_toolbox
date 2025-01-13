@@ -1,14 +1,18 @@
 function [BinData] = rawToBinData(res_table,Fs,binsize,hard_cutoffs,hist_choice)
 % RAWTOBINDATA converts raw data to binned data with other info
-% Input
+% Input:
+%       - res_table,(table): Extracted spindle event info
+%       - Fs, (double): Sampling freq in Hz
+%       - binsize, (double): bin size in sec
+%       - hard_cutoffs (1x2 vector, double): Freq cutoff to post select fast spindles
+%                      choose events in freq range: [hard_cutoffs(1) hard_cutoffs(2)]
+%       - hist_choice, (string), it is either "short" or "long"
+%           --'long': Long term history (up to 90 secs, this can show infraslow activity)
+%           --'short': Short term history (up to 15 secs, this option runs fast)
 %
-% Output:bindata, a struct that contains all info for model fitting
-%        -
-%        -
-%        
+% Output: BinData, a struct that contains all info for model fitting 
 %
-% Accompanying with Chen et al., PNAS, 2024
-% Created by SChen, 111924
+% Accompanying with Chen et al., PNAS, 2025
 % Updated 010624
 %******************************************************************************************************************************************
 

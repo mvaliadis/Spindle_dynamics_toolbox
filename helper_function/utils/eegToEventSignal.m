@@ -2,19 +2,18 @@ function [res_table]  = eegToEventSignal(EEG,Fs,stage_val,stage_time)
 % EEGTOEVENTSIGNAL proprocess EEG data to extract spindle events and slow oscillations
 %
 % Input:
-%       EEG: (double) raw EEG data              -- required
-%       Fs: (double) sampling frequency in Hz   -- required
-%       stage_val: (double) stage values 
+%       - EEG: (double) raw EEG data              -- required
+%       - Fs: (double) sampling frequency in Hz   -- required
+%       - stage_val: (double) stage values 
 %                   where 1,2,3,4,5 represent N3,N2,N1,REM and Wake
-%       stage_time:(double) corresponding time of the stage
+%       - stage_time:(double) corresponding time of the stage
 %
 % Output: 
-%       res_table: (table) all event info and signals to use. Key components include:
-%           - peak_event time
-%           -event frequency
-%           -SO power
-%           -SO phase
-%           -...
+%       -res_table: (table) All event info and signals to use. Key components include:
+%           -- peak_ctimes: detected event central times (s)
+%           -- peak_freqs: detected event frequency (Hz)
+%           -- SOpow: Slow oscillation power
+%           -- SOphase: Slow oscillation phase
 %
 % Please provide the following citation for all use:
 %       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 

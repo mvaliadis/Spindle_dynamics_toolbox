@@ -1,5 +1,5 @@
-function [xlag,yhat,yu,yl] = plot_hist_curve(stats,ModelSpec,BinData)
-% PLOT_HIST_CURVE computes history modulation value and plot history curve
+function [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinData)
+% PLOT_HIST_CURVE computes history modulation value, features, and plot history curve
 % Input:
 %       -stats (struct), results after model fitting 
 %       -ModelSpec (struct), model specifications
@@ -14,12 +14,22 @@ function [xlag,yhat,yu,yl] = plot_hist_curve(stats,ModelSpec,BinData)
 %             k = 2 when N2 and N3 history curve are computed, 
 %               in which case, 1st col means N2 history, 2nd col means N3 history
 %             n is determined by history lag and sp_resol (n = history lag in bin / sp_resol)
+%       -hist_features (struct), it contains all history features, including
+%          --ref_period: refractory period (s)
+%          --exc_period: excited period(s)
+%          --p_time: peak time (s)
+%          --p_height: peak height
+%          --AUC_is: area under infraslow period (40 - 70) sec
 %
-% Add Single History VS N2 N3 History
-% Add History Features
 %
-% Created by SC 010625 SC
+% Please provide the following citation for all use:
+%       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
+%       "Individualized Temporal Patterns Drive Human Sleep Spindle Timing"
+%       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
+%
+% Last updated, SChen 010725
 %******************************************************************************************************************************************
+
 if ModelSpec.BinarySelect(4) == 1
 %% Prepare for the figure
 b = stats.beta;              % fitted parameters 
@@ -37,7 +47,8 @@ xlag = (ModelSpec.binsize*sp_resol:ModelSpec.binsize*sp_resol:ModelSpec.hist_ord
         yl = (yhat0 - yl0)/exp(b(1));
         yu = (yhat0 + yu0)/exp(b(1));
         yhat = yhat0/exp(b(1));
-        
+        [hist_features] = compute_hist_features(xlag,yhat,yl,yu);
+
         % figure
         shadebounds(xlag,yhat,yu,yl,'k',[.5,.5,.5],[.9,.9,.9],.4);
         stem(BinData.isis, -0.2*ones(length(BinData.isis),1),'Color','k', 'Marker', 'none','linewidth',.05);
@@ -57,6 +68,7 @@ xlag = (ModelSpec.binsize*sp_resol:ModelSpec.binsize*sp_resol:ModelSpec.hist_ord
         yl2 = (y2 - yl2)/exp(b(1));
         yu2 = (y2 + yh2)/exp(b(1));
         y2 = y2/exp(b(1));
+        [hist_features] = compute_hist_features(xlag,y2,yl2,yu2);
         
         % Compute N3 history curve
         [y3,yl3,yh3] = glmval(b,[zeros(ModelSpec.hist_ord/sp_resol,sizediff) sp_finer zeros(size(sp_finer)) sp_finer],'log',stats);

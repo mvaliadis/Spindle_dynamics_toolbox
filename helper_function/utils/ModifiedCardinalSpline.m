@@ -1,10 +1,17 @@
 function [Sp] = ModifiedCardinalSpline(ord,c_pt_times_all,s)
-%% Cardinal spline for non-uniform spacing
-% modified cardinal spline
+%MODIFIEDCARDINALSPLINE computes cardinal spline for non-uniform spacing
 %
-% Input: ord, knot locations, tension parameter
-% Updated by Shuqiang Chen, 10/17/22, based on the code from Uri and Mehrad 
+% Input: 
+%       -ord, (double): history order 
+%       -c_pt_times_all, (double, vector): knot locations
+%       -s, (double): tension parameter
+% Ouput: Spline matrix
+%
+% Modified cardinal spline avoids the boundary effect, updated based on the code from: 
+% Sarmashghi M, Jadhav SP, Eden U. Efficient spline regression for neural spiking data. PLoS One. 2021
+% SChen, 10/17/22
 %************************************************************************************
+
 %%
 lastknot = ord;
 numknots = length(c_pt_times_all);
@@ -38,9 +45,6 @@ for i=1:lastknot
            Sp(i,nearest_c_pt_index-1:nearest_c_pt_index+2) = p;
     end
 end
-
-
-
 
 
 end

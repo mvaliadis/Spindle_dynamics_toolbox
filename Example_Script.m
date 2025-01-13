@@ -1,4 +1,4 @@
-%% Quick Start 
+%% Example script
 % This is the main script to analyze spindle dynamics and output results
 %
 % Please provide the following citation for all use:
@@ -20,32 +20,10 @@ data_path = 'example_data/';
 % Load example EEG data 1
 load([data_path,'example_data1.mat']);
 
-%% PRE SETTINGS
-binsize = 0.1;                  % point process bin size in sec
+%% PRE SETTINGS AND MODEL SPECIFICATIONS
+binsize = 0.1;                  % point process bin size in sec (Fixed)
 hard_cutoffs = [12, 16];        % choose fast spindles in freq range:12-16 Hz
 
-% choose history order
-%  -'long': Long term history (up to 90 secs, this can show infraslow activity)
-%  -'short': Short term history (up to 15 secs, this option runs fast)
-
-hist_choice = 'long';
-switch lower(hist_choice)
-    case {'short'}
-          hist_ord = 15/binsize;   % 15 sec history
-          control_pt = [0:15:90 120 hist_ord]; % cardinal spline control point location
-    case {'long'}
-          hist_ord = 90/binsize;   % 90 sec history
-          control_pt = [0:15:90 120 150:100:750 hist_ord]; 
-end
-
-%% DATA PREPROCESS
-% Extract spindle events,their properties, slow oscillation(SO) phase and power
-[res_table]  = eegToEventSignal(EEG,Fs,stage_val,stage_time);  
-
-% Convert data to binned data 
-[BinData] = rawToBinData(res_table,Fs,binsize,hard_cutoffs,hist_choice);
-
-%% MODEL SPECIFICATION
 % 1) Choose model factors by a binary vector (1x4,double)
 %    in the fixed order: SOphase, stage, SOpower,history
 %    This vector determines which factors are included (1) or not (0)
@@ -57,16 +35,29 @@ BinarySelect = [1,1,0,1];  % Select SOphase,stage,history as factors
 
 InteractSelect = {'stage:SOphase'};  % Add stage-SOphase interaction
 
-% 3) Specify the model
+% 3) Choose history order
+%   'long': Long term history (up to 90 secs, this can show infraslow activity)
+%   'short': Short term history (up to 15 secs, this option runs fast)
+
+hist_choice = 'long';
+switch lower(hist_choice)
+    case {'short'}
+          hist_ord = 15/binsize;   % 15 sec history
+          control_pt = [0:15:90 120 hist_ord]; % cardinal spline control point location
+    case {'long'}
+          hist_ord = 90/binsize;   % 90 sec history
+          control_pt = [0:15:90 120 150:100:750 hist_ord]; 
+end
+
+% 4) Specify the model
 [ModelSpec] = specify_mdl(BinarySelect,InteractSelect,'hist_choice',hist_choice,'control_pt',control_pt);
 
-%% BUILD DESIGN MATRIX
-% contruct design matrix given model spec
-X = build_design_mt(ModelSpec,BinData);
+%% DATA PREPROCESS TO DESIGN MATRIX
+[X, BinData,res_table] = preprocessToDesignMatrix(EEG, Fs, stage_val, stage_time,ModelSpec);
 
 %% MODEL FITTING
 warning('off', 'all');
-[b, dev, stats] = glmfit(X,BinData.y,'poisson'); % Fit Poisson-GLM
+[b, dev, stats] = glmfit(X,BinData.y,'poisson'); 
 
 %% PREPARE FOR FIGURE
 % Compute multitaper spectrogram
@@ -93,7 +84,7 @@ y = BinData.y;                                % spindle binary train
 sop = BinData.sop;                            % SO power in bin  
 phase = BinData.phase;                        % SO phase in bin  
 
-%% OUTPUT OVERVIEW FIGURE (FIG 1)
+%% GENERATE THE OVERVIEW FIGURE
 time_range = [xtime(1) xtime(end)];  % Set the time range of the visualization
 
 % Figure design
@@ -176,16 +167,16 @@ scrollzoompan(ax(7),'x');
 
 
 %--------------------- Right panel -----------------------
-% 1) Plot Polarhistogram
+% Plot Polarhistogram
 axes(ax(4))
 phasehistogram(phase(y==1),1,'NumBins',50); 
 rlim([0 .4])
 rticks(0:0.1:0.4)
 title('Spindle Phase Histogram',FontSize=12)
 
-% 2) Plot history Curve
+% Plot history Curve
 axes(ax(8))
-[xlag,yhat,yu,yl] = plot_hist_curve(stats,ModelSpec,BinData);
+plot_hist_curve(stats,ModelSpec,BinData);
 
 % Fig settings
 for i = [1 2 3 5 6 7]
@@ -193,10 +184,13 @@ for i = [1 2 3 5 6 7]
     set(ax(i),'FontSize',12,'box','off');
 end
 
-%% GENERATE A STAGE VS SOP PHASE SHIFT FIGURE (FIG 2)
+%% GENERATE THE HISTORY MODULATION FIGURE
+figure;
+[xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinData);
+
+%% GENERATE THE STAGE VS SOP PHASE SHIFT FIGURE
 % Fit model with SOP
 [ModelSpec_sop] = specify_mdl([1 0 1 1],{'SOphase:SOpower'},'hist_choice',hist_choice,'control_pt',control_pt);
-%[ModelSpec_sop] = specify_mdl([1 0 1 0],{'SOphase:SOpower'},'hist_choice',[],'control_pt',[]);
 X_sop = build_design_mt(ModelSpec_sop,BinData);
 [b_sop, dev_sop, stats_sop] = glmfit(X_sop,y,'poisson'); 
 [CIF_sop,~,~] = glmval(b_sop,X_sop,'log',stats_sop);
@@ -271,8 +265,7 @@ plotcos;
 axes(ax(10))
 plotcos;
 
-%% Model Assessment： KS statistic
-
+%% GENERATE KS PLOTS (MODEL EVALUATION)
 % Stage only model
 [ModelSpec1_s] = specify_mdl([0 1 0 0],[],'hist_choice',[],'control_pt',[]);
 X1_s = build_design_mt(ModelSpec1_s,BinData);
@@ -316,7 +309,7 @@ for i = 1:4
     axis(ax(i), 'square'); 
 end
 
-%% OUTPUT RELATIVE CONTRIBUTION OF EACH FACTOR
+%% OUTPUT DEVIANCE EXPLAINED FOR EACH FACTOR
 [dev_exp_sta,dev_exp_sop] = compute_dev_exp(BinData);
 
 % Display the table
@@ -325,4 +318,4 @@ Table1 = table(factors, 100*dev_exp_sta', 'VariableNames', {'Factor', 'Deviance 
 disp(Table1);
 
 
-% Save other result as a table
+%% Save other result as a table

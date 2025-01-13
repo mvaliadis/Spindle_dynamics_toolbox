@@ -15,8 +15,7 @@ function tf = ismember_interaction(targetInteraction, interactionsList)
 %                              logical 0 means target(2) is not in the list
 %
 % Accompanying with Chen et al., PNAS, 2025
-% Created SC 111524
-% Updated SC 123024
+% Updated SChen 123024
 % ********************************************************************
 
 %%

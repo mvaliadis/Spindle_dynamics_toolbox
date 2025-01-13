@@ -68,7 +68,7 @@ function [SOpower_norm, SOpower_times, SOpower_stages, norm_method, ptile] = com
 %       SOpower_times: 1xM double - timeseries SO power times
 %
 % Copyright 2024 Michael J. Prerau Laboratory. - http://www.sleepEEG.org
-% Code adapted from Prerau Lab
+% Code adapted from Prerau Lab, SChen
 % **************************************************************
 
 %% Parse input
@@ -136,10 +136,6 @@ end
 % Exclude outlier SOpower that usually reflect isexcluded
 SOpower(abs(nanzscore(SOpower)) >= SOpower_outlier_threshold) = nan;
 
-% % Remove single time points sandwiched between nan values
-% last_isnan = [0; isnan(SOpower(1:end-1))];
-% next_isnan = [isnan(SOpower(2:end)); 0];
-% SOpower(last_isnan & next_isnan) = nan;
 
 %% Normalize SO power
 
@@ -160,23 +156,6 @@ end
 
 %Check shift
 assert(shift_ptile >= 0 && shift_ptile <= 100, 'Shift percentile must be between 0 and 100');
-
-% Note: right now the stage selection is only applied to the 'shift'
-% method. If we were to use proportion, percentile, ALL stages will be
-% used. Is this what we want? 
-
-% Note: two other cases coded in SOpower_histogram_allstageTIB() is now
-% removed:
-%     case {'NREMshift', 'nrem', 'NREM'}
-%         NREM_SOpow = SOpower_goodstages(ismember(stages_SOpower, [1,2]));
-%         NREM_SOpow_mean_first5 = mean(NREM_SOpow(1:round(300/SOpow_times_step)), 'omitnan'); % mean of first 5 min of NREM
-%         SOpower_norm = SOpower_goodstages - NREM_SOpow_mean_first5;
-%         ptile = [];
-% 
-%     case {'N1', 'n1', 'N1shift', 'n1shift'}
-%         N1_SOpow_mean = mean(SOpower_goodstages(stages_SOpower==3), 'omitnan');
-%         SOpower_norm = SOpower_goodstages - N1_SOpow_mean;
-%         ptile = [];
 
 switch norm_method
     case {'proportion', 'normalized'}

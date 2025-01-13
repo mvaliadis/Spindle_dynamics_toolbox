@@ -1,5 +1,5 @@
 function [stage,stagetrain] = stageraw2bin(stages_raw,stagetime_raw,bin,epoch,domaindivide)
-%% Function to transform stage train from stage time and stage val
+%STAGERAW2BIN transforms stage time and stage val to binned stage
 
 % sleep stage train
 if bin<= epoch

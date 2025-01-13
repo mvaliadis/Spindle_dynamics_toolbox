@@ -2,9 +2,20 @@ function [X] = build_design_mt(ModelSpec,BinData)
 % BUILD_DESIGN_MT constructs a design matrix based on the factors selected by the user.
 % Factors with fixed order: SOphase, stage, SOpower,history
 % 
-% Accompanying with Chen et al., PNAS, 2025
-% Created by SChen, 112624
-% Updated SC, 121024, 123024,123124
+% Input:
+%       - ModelSpec, (struct): Model specifications
+%       - BinData, (struct): All binned data 
+%
+% Output:
+%       - X (double,matrix): Design matrix 
+%
+%
+% Please provide the following citation for all use:
+%       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
+%       "Individualized Temporal Patterns Drive Human Sleep Spindle Timing"
+%       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
+%
+% Last updated, SChen 010725
 %**********************************************************************************
 
 %% Deal with inputs
