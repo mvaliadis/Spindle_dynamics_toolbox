@@ -21,7 +21,7 @@ To clone the Spindle_dynamics_toolbox.git repository to your own computer or rem
 * [Background and Toolbox Overview](#background-and-toolbox-overview)
 * [Quick Start](#quick-start)
 * [Model Results And Visualizations](#model-results-and-visualizations)
-* [Documentation](#documentation)
+* [Run Your Own Data](#run-your-own-data)
 * [Repository Structure](#repository-structure)
 * [Citations](#citations)
 * [Status](#status)
@@ -181,7 +181,13 @@ The modeling framework allows us to quantitatively compare the relative contribu
 
 
 
-## Documentation
+## Run Your Own Data
+In this section, we aim to guide users to load their own data and run analysis.
+
+### Data Loading
+
+
+
 
 
 ## Repository Structure
