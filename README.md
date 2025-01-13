@@ -182,9 +182,37 @@ The modeling framework allows us to quantitatively compare the relative contribu
 
 
 ## Run Your Own Data
-In this section, we aim to guide users to load their own data and run analysis.
+In this section, we aim to guide users to load their own data and run analysis. Users can run their own data through the quick_start GUI for an overview figure, or through the main_script using the two main functions specify_mdl and preprocessToDesignMatrix()
 
-### Data Loading
+### Model Specification
+
+
+
+### Data Loading And Preprocessing
+The first function applys the watershed algorithm to extract time-frequency peaks
+``` matlab
+computeTFPeaks(data, Fs, stage_vals, stage_times, <options>);
+```
+It uses the following inputs:
+``` matlab
+%       data (req):                [1xn] double - timeseries data to be analyzed
+%       Fs (req):                  double - sampling frequency of data (Hz)
+%       stage_vals (req):          [1xm] double - sleep stage values at eaach time in
+%                                  stage_times. Note the staging convention: 0=unidentified, 1=N3,
+%                                  2=N2, 3=N1, 4=REM, 5=WAKE
+%       stage_times (req):         [1xm] double - timestamps of stage_vals
+%       t_data (opt):              [1xn] double - timestamps for data. Default = (0:length(data)-1)/Fs;
+```
+The outputs are:
+``` matlab
+%       stats_table:  table - time, frequency, height, SOpower, and SOphase
+%                     for each TFpeak
+%       spect:        2D double - spectrogram of data
+%       stimes:       1D double - timestamp bin center values for dimension 2 of
+%                     spect
+```
+### Load User Data In Quick Start GUI
+
 
 
 
