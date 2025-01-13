@@ -82,7 +82,7 @@ After installing the package, execute the "quick_start" GUI function in MATLAB c
 The following GUI should be generated (shown below, left panel):
 
 <p align="center">
-<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/quick_start.png" width="400" />
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/GUI2.png" width="700" />
 </p> 
 
 Let's follow the 4 steps to make the choices. Here, we provide an example of the settings (above, right panel), which specifies the model we primarily used in the paper:
