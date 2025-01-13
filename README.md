@@ -1,5 +1,5 @@
 # Spindle_dynamics_toolbox
-This is the toolbox repository accompanying the spindle temporal dynamics paper (Chen et al., PNAS, 2025).
+This is the MATLAB toolbox repository accompanying the spindle temporal dynamics paper (Chen et al., PNAS, 2025).
 ### Please cite the following paper when using this toolbox
 > Shuqiang Chen, Mingjian He, Ritchie E. Brown, Uri T. Eden, and Michael J. Prerau*. Individualized temporal patterns drive human sleep spindle timing, Proc. Natl. Acad. Sci. U.S.A.
 122 (2) e2405276121, https://doi.org/10.1073/pnas.2405276121 (2025).
@@ -7,19 +7,14 @@ This is the toolbox repository accompanying the spindle temporal dynamics paper 
 
 ## Initial Clone 
 
-To clone the Spindle_dynamics_toolbox.git repository to your own computer or remote work station, you can create an empty folder to contain the repository. 
+To clone the Spindle_dynamics_toolbox.git repository to your own computer or remote work station, start by creating a directory for it. Then, run the cloning command from within that directory in your terminal.
  
  ##### create an empty folder:
 	mkdir Spindle_dynamics_toolbox
 
  ##### clone the repository to the folder you created:
-	git clone --recursive git@github.com:preraulab/Spindle_dynamics_toolbox.git Spindle_dynamics_toolbox
+	git clone git@github.com:preraulab/Spindle_dynamics_toolbox.git Spindle_dynamics_toolbox
 
- ##### set to master branch for all submodules:
-	git submodule foreach --recursive git checkout master
- 
- ##### to update submodules:
-	git submodule update --remote
  --- 
 
 ## Table of Contents
@@ -78,7 +73,7 @@ Using a rigorous statistical framework, we demonstrate that short-term timing pa
 
 
 ## Quick Start
-After installing the package, execute the "quick_start" GUI function in the command line to get started
+After installing the package, execute the "quick_start" GUI function in MATLAB command line to get started
 
 ``` matlab
  > quick_start;
