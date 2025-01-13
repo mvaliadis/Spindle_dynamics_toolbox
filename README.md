@@ -182,7 +182,9 @@ The modeling framework allows us to quantitatively compare the relative contribu
 
 
 ## Run Your Own Data
-In this section, we aim to guide users to load their own data and run analysis. Users can run their own data through the quick_start GUI for an overview figure, or through the main_script using the two main functions specify_mdl and preprocessToDesignMatrix()
+This section introduces how users can load and analyze their own data using this toolbox. Users can leverage the main_script with two primary functions: specify_mdl and preprocessToDesignMatrix()
+For an exploratory overview figure, users can also use the quick_start GUI before diving into detailed analyses.  [Quick Start](#quick-start)
+<p>For an exploratory overview figure, users can also use the <a href="#quick-start">quick_start GUI</a> before diving into detailed analyses.</p>
 
 ### Model Specification
 
