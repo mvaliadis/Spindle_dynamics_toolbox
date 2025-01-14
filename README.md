@@ -105,7 +105,22 @@ Once you clicked on "Run the Model" button, an overview figure will be generated
 
 Use the scrollzoompan interface to slide and play around with the figure. To view the exact same epoch, set **Zoom** to be **90** and **Pan** to be **30145**.
 
-Note: You can also load your own data, once you click on "Load User Data", it allows you to browse and load your own data. Here's a few requirements for the data file:
+#### To load your own data
+Click on "Load User Data", it allows you to browse and load your own data. Ensure your data file meets the following requirements:
+
+1. **File Format**:
+   - The file must be a `.mat` file (MATLAB file format).
+
+2. **ALL Required Variables**:
+   - The `.mat` file must contain the following variables:
+     - **`EEG`**: raw EEG data.
+     - **`Fs`**: Sampling frequency of the EEG data.
+     - **`stage_val`**: Sleep stage values (e.g., numerical or categorical representation of sleep stages).
+     - **`stage_time`**: Corresponding times for the sleep stages.
+If any field is missing, the file will not be processed.
+
+3. **File Accessibility**:
+   - Ensure the file is accessible and can be successfully loaded using MATLAB's `load` function.
 
 
 ## Model Results And Visualizations
