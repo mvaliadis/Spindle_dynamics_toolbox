@@ -7,7 +7,7 @@ function [] = plot_stage_prefphase(b,stats,ModelSpec)
 %       "Individualized Temporal Patterns Drive Human Sleep Spindle Timing"
 %       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
 %
-% Created by SChen 123124, 
+% Created by SChen 123124
 %******************************************************************************************************************************************
 
 %% stage:SOphase must be specified to generate this
@@ -103,10 +103,6 @@ if any(ismember_interaction(ModelSpec.InteractSelect,{'stage:SOphase'}))
     stage_pp_mat(:,401:600) = repmat(y_n3,1,200);
     
     %% Figure
-    % ax = figdesign(1,1);
-    % pp_axis = split_axis(ax(1),[.8 .15],1,0.05,true);
-    % linkaxes(pp_axis,'x')
-    % axes(pp_axis(1))
     
     imagesc(phi0,1:600,stage_pp_mat'*60/ModelSpec.binsize); hold on;
     colormap(gca,viridis);

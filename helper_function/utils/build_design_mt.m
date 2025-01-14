@@ -37,6 +37,8 @@ RW = BinData.RW;
 sop = sop/5;
 scale_factor = 10;
 
+% Initialize X
+X = [];
 %% Construct design matrix
 % 1) Without interactions______________________________________________________
 if isempty(interactions)
@@ -102,5 +104,8 @@ elseif all(ismember_interaction(interactions,{'SOpower:SOphase'}))
         error('Model component or interaction term is not properly specified')
 end
  
+if isempty(X)
+    error('Model component or interaction term is not properly specified')
+end
 
 end
