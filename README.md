@@ -358,5 +358,5 @@ All implementations are functional, but are subject to refine.
 <br/>
 Next optimization, deal with perfect predictors (e.g., Wake and REM stage) to save runtime.
 <br/>
-Last updated by SChen (shuqiang@bu.edu), 01/14/2025
+Created and updated by Shuqiang Chen (shuqiang@bu.edu), 01/14/2025
 
