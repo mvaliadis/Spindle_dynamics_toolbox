@@ -164,10 +164,11 @@ In this section, we will walk through the data loading, preprocessing, model spe
 ```
 
 
-### Data Loading And Preprocessing
-The first function applys the watershed algorithm to extract time-frequency peaks
+### Data Preprocessing
+This function extracts spindle event information (`res_table`), saves preprocessed binned data (`BinData`), and design matrix (`X`) for model fitting.
+
 ``` matlab
-computeTFPeaks(data, Fs, stage_vals, stage_times, <options>);
+[X, BinData,res_table] = preprocessToDesignMatrix(EEG, Fs, stage_val, stage_time,ModelSpec);
 ```
 
 ``` matlab
@@ -191,29 +192,8 @@ computeTFPeaks(data, Fs, stage_vals, stage_times, <options>);
 
 
 
-It uses the following inputs:
-``` matlab
-%       data (req):                [1xn] double - timeseries data to be analyzed
-%       Fs (req):                  double - sampling frequency of data (Hz)
-%       stage_vals (req):          [1xm] double - sleep stage values at eaach time in
-%                                  stage_times. Note the staging convention: 0=unidentified, 1=N3,
-%                                  2=N2, 3=N1, 4=REM, 5=WAKE
-%       stage_times (req):         [1xm] double - timestamps of stage_vals
-%       t_data (opt):              [1xn] double - timestamps for data. Default = (0:length(data)-1)/Fs;
-```
-The outputs are:
-``` matlab
-%       stats_table:  table - time, frequency, height, SOpower, and SOphase
-%                     for each TFpeak
-%       spect:        2D double - spectrogram of data
-%       stimes:       1D double - timestamp bin center values for dimension 2 of
-%                     spect
-```
-
-
-
 ## Model Results And Visualizations
-In this section, we will walk through results part in the example script, highlighting the major functions. If you would like to generate all figures with a single click, simply execute the example script:
+In this section, we will walk through results part in the example script, highlighting the major functions. Again, if you would like to generate all figures with a single command, simply execute the example script:
 
 ``` matlab
  > example_script;
