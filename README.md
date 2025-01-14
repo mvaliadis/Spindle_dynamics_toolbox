@@ -131,6 +131,7 @@ In this section, we will walk through the data loading, preprocessing, model spe
 ### Model Specification
 The `specify_mdl` consolidates all model specifications provided by users, including the model factors (`BinarySelect`), interactions to include(`InteractSelect`), and other additional options. These specifications are returned as a structured array (`ModelSpec`). 
 
+Usage:
 ``` matlab
 [ModelSpec] = specify_mdl(BinarySelect,InteractSelect,'hist_choice',hist_choice,'control_pt',control_pt);
 ```
@@ -168,6 +169,7 @@ The `specify_mdl` consolidates all model specifications provided by users, inclu
 ### Data Preprocessing
 The `preprocessToDesignMatrix` function extracts spindle event information (`res_table`), saves preprocessed binned data (`BinData`), and design matrix (`X`) for model fitting.
 
+Usage:
 ``` matlab
 [X, BinData,res_table] = preprocessToDesignMatrix(EEG, Fs, stage_val, stage_time,ModelSpec);
 ```
@@ -191,19 +193,19 @@ The `preprocessToDesignMatrix` function extracts spindle event information (`res
 %           -- SOphase: (cell), slow oscillation phase
 ```
 ### Model Fitting
-In Matlab, `glmfit` function is applied to fit the point process-GLM model.
+In Matlab, `glmfit` function is applied to fit the point process - GLM model.
 
-* Input:
-  - Design matrix: X
-  - Response: y
-  - Specify distribution: ‘poisson’
-  - Include constant or not: ‘constant’, ‘off’ 
-
-* Output:
-  - b: fitted parameters
-  - dev: deviance of the model
-  - stats: a Matlab struct that contains all the information about the model fitting result, including coefficient estimates (b), covariance matrix for b, p-values for b, residuals, etc.
-
+``` matlab
+% Input:
+%       - X: (double, matrix), design Matrix, the size depends on data length and ModelSpec
+%       - y: (double, 1D), response, or point process binary train
+%       - 'poisson': (string),  specified distribution 
+%
+% Output: 
+%       - b: (double, 1D), fitted parameters
+%       - dev: (double, scalar), deviance of the model
+%       - stats: a Matlab struct that contains all the information of the model fitting result, including coefficient estimates (b), covariance matrix for b, p-values for b, residuals, etc.
+```
 
 Usage:
 ```
