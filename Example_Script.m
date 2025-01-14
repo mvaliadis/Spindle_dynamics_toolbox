@@ -11,7 +11,7 @@
 
 %% PATH SETTINGS
 
-% Add necessary functions to path
+% Add help functions to path
 addpath(genpath('./helper_function'))
 
 %% DATA LOADING
