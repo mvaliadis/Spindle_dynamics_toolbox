@@ -195,6 +195,11 @@ Usage:
 ### Model Fitting
 In Matlab, `glmfit` function is applied to fit the point process - GLM model.
 
+Usage:
+```
+[b, dev, stats] = glmfit(X,y,'poisson');
+```
+
 ``` matlab
 % Input:
 %       - X: (double, matrix), design Matrix, the size depends on data length and ModelSpec
@@ -205,11 +210,6 @@ In Matlab, `glmfit` function is applied to fit the point process - GLM model.
 %       - b: (double, 1D), fitted parameters
 %       - dev: (double, scalar), deviance of the model
 %       - stats: a Matlab struct that contains all the information of the model fitting result, including coefficient estimates (b), covariance matrix for b, p-values for b, residuals, etc.
-```
-
-Usage:
-```
-[b, dev, stats] = glmfit(X,y,'poisson');
 ```
 
 
