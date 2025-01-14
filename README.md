@@ -7,7 +7,7 @@ This is the MATLAB toolbox repository accompanying the spindle temporal dynamics
 
 ## Initial Clone 
 
-To clone the Spindle_dynamics_toolbox.git repository to your own computer or remote work station, start by creating a directory for it. Then, run the cloning command from within that directory in your terminal.
+To clone the Spindle_dynamics_toolbox.git repository to your own computer or remote work station, start by creating a directory for it. Then, within that directory in your terminal, run the clone command.
  
  ##### create an empty folder:
 	mkdir Spindle_dynamics_toolbox
@@ -36,7 +36,7 @@ Using a rigorous statistical framework, we demonstrate that short-term timing pa
 
 <h3>Toolbox Overview</h3>
 <p>
-    This code toolbox is designed to provide an integrated approach to characterizing <strong>instantaneous spindle temporal dynamics</strong> influenced by multiple factors, including sleep stage/depth (SO Power), cortical up/down states (SO Phase), and the past history of spindles. It consists of <strong>two major components:</strong>
+    Here, we provide this code toolbox to implement this integrated framework to characterizing <strong>instantaneous spindle temporal dynamics</strong> influenced by multiple factors, including sleep stage/depth (SO Power), cortical up/down states (SO Phase), and the past history of spindles. It consists of <strong>two major components:</strong>
 </p>
 
 <h4>1. Quick Start GUI</h4>
