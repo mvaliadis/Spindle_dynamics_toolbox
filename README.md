@@ -190,7 +190,25 @@ The `preprocessToDesignMatrix` function extracts spindle event information (`res
 %           -- SOpow: (cell), slow oscillation power
 %           -- SOphase: (cell), slow oscillation phase
 ```
+### Model Fitting
+In Matlab, `glmfit` function is applied to fit the point process-GLM model.
 
+* Input:
+  - Design matrix: X
+  - Response: y
+  - Specify distribution: ‘poisson’
+  - Include constant or not: ‘constant’, ‘off’ 
+
+* Output:
+  - b: fitted parameters
+  - dev: deviance of the model
+  - stats: a Matlab struct that contains all the information about the model fitting result, including coefficient estimates (b), covariance matrix for b, p-values for b, residuals, etc.
+
+
+Usage:
+```
+[b, dev, stats] = glmfit(X,y,'poisson');
+```
 
 
 ## Model Results And Visualizations
