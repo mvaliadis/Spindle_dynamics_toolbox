@@ -58,17 +58,20 @@ else % Find corresponding runs contains valid peak, use run length as peak width
     exc_period = run_len(idx_contain_pk)*xbin;
 end
 
-% Compute AUC infraslow period 
-is_left = 40/xbin;
-is_right = 70/xbin;
-is_length = (is_right-is_left)*xbin;
-AUC_is = sum((yhat(is_left:is_right))*xbin)/is_length;
-
+% Save results
 hist_features = struct();
 hist_features.ref_period = ref_period;
 hist_features.exc_period = exc_period;
 hist_features.p_time = p_time;
 hist_features.p_height = p_height;
-hist_features.AUC_is = AUC_is;
+
+% Save infraslow multiplier only when 
+if xlag(end) > 1500
+    is_left = 40/xbin;
+    is_right = 70/xbin;
+    is_length = (is_right-is_left)*xbin;
+    AUC_is = sum((yhat(is_left:is_right))*xbin)/is_length;
+    hist_features.AUC_is = AUC_is;
+end
 
 end

@@ -68,6 +68,8 @@ if isempty(interactions)
             X = [sta(:,[1 3:5]) cos(phase) sin(phase) sp_hist];
         case '1011' % sop,phase,hist
             X = [RW sop (sop.^2)/scale_factor cos(phase) sin(phase) sp_hist];
+        otherwise
+            error('The model components are not properly specified.')
     end
 
 % 2) With only stage:SOphase interaction ______________________________________________________

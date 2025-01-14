@@ -8,7 +8,14 @@ function quick_start
 %         3) Choose history orders, if history is included in 2)
 %         4) Choose interaction terms
 % Click on the "Run the Model" button -> An overview figure will be generated
-%               
+% 
+% To load user data, make sure your .mat file has ALL variable names for
+% including EEG,Fs,stage_val,stage_time. 
+% -- See all accepted names for each variable (case-insensitive):
+% 1. EEG names can be 'EEG', 'eeg_data', 'raw_EEG','data'
+% 2. Fs names can be 'Fs', 'sampling_rate'
+% 3. stage_val names can be 'stage_val', 'stage_vals', 'stages','stage','stageval','stagevals'
+% 4. stage_time names can be 'stage_time', 'stage_t', 'time_stages','stage_t','stage_times'
 % 
 % Please provide the following citation for all use:
 %       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
@@ -21,6 +28,9 @@ function quick_start
 %%    
     % Add path
     addpath(genpath('./helper_function'))
+
+    % Initialize global cache for res_table so you dont run it everytime
+    res_table = [];
     
     % Create a separate floating window for options
     optionsFig = uifigure('Name', 'Quick Start GUI', 'Position', [1050, 100, 300, 500]);
@@ -84,34 +94,66 @@ function quick_start
     function loadExampleData()
         data_path = 'example_data/';
         load([data_path, 'example_data1.mat'], 'EEG', 'Fs', 'stage_val', 'stage_time'); % Replace with your actual variables
+        res_table = []; % Reset cached res_table since new data is loaded
         dataLoaded = true;
         dataStatusLabel.Text = 'Example data loaded successfully!';
     end
 
+    
     % Function to load user data
-    function loadUserData()
-        [file, path] = uigetfile('*.mat', 'Select Data File');
-        if isequal(file, 0)
-            dataStatusLabel.Text = 'User canceled data selection.';
-        else
-            try
-                loadedData = load(fullfile(path, file)); % Load user-selected file
-                if isfield(loadedData, 'EEG') && isfield(loadedData, 'Fs') && ...
-                   isfield(loadedData, 'stage_val') && isfield(loadedData, 'stage_time')
-                    EEG = loadedData.EEG;
-                    Fs = loadedData.Fs;
-                    stage_val = loadedData.stage_val;
-                    stage_time = loadedData.stage_time;
-                    dataLoaded = true;
-                    dataStatusLabel.Text = ['User data loaded: ', file];
-                else
-                    uialert(optionsFig, 'Invalid data format. Expected variables: EEG, Fs, stage_val, stage_time.', 'Load Error');
+   % Function to load user data
+function loadUserData()
+    [file, path] = uigetfile('*.mat', 'Select Data File');
+    if isequal(file, 0)
+        dataStatusLabel.Text = 'User canceled data selection.';
+    else
+        try
+            loadedData = load(fullfile(path, file)); % Load user-selected file
+            
+            % Check for potential variable names for each required field
+            EEG_names = {'EEG', 'eeg_data', 'raw_EEG','data'}; % Possible names for EEG
+            Fs_names = {'Fs', 'sampling_rate'}; % Possible names for Fs
+            stage_val_names = {'stage_val', 'stage_vals', 'stages','stage','stageval','stagevals'}; % Possible names for stage values
+            stage_time_names = {'stage_time', 'stage_t', 'time_stages','stage_t','stage_times'}; % Possible names for stage times
+
+            % Initialize variables
+            EEG = [];
+            Fs = [];
+            stage_val = [];
+            stage_time = [];
+
+            % Check each field in loadedData
+            fields = fieldnames(loadedData);
+
+            % Match and assign the appropriate variable
+            for i = 1:length(fields)
+                field = fields{i};
+                if any(strcmpi(field, EEG_names))
+                    EEG = double(loadedData.(field));
+                elseif any(strcmpi(field, Fs_names))
+                    Fs = double(loadedData.(field));
+                elseif any(strcmpi(field, stage_val_names))
+                    stage_val = double(loadedData.(field));
+                elseif any(strcmpi(field, stage_time_names))
+                    stage_time = double(loadedData.(field));
                 end
-            catch ME
-                uialert(optionsFig, ['Error loading file: ', ME.message], 'Load Error');
             end
+
+            % Verify that all required variables are assigned
+            if isempty(EEG) || isempty(Fs) || isempty(stage_val) || isempty(stage_time)
+                uialert(optionsFig, 'Missing required variables: EEG, Fs, stage_val, or stage_time.', 'Load Error');
+            else
+                % If all variables are assigned successfully
+                dataLoaded = true;
+                res_table = []; % Reset cached res_table since new data is loaded
+                dataStatusLabel.Text = ['User data loaded: ', file];
+            end
+
+        catch ME
+            uialert(optionsFig, ['Error loading file: ', ME.message], 'Load Error');
         end
     end
+end
 
     % Function to run the model and generate a separate figure
     function runModel()
@@ -145,9 +187,15 @@ function quick_start
             return;
         end
 
+        % Check if `res_table` is cached
+        if isempty(res_table)
+            disp('Extracting spindle info ...');
+            res_table = eegToEventSignal(EEG, Fs, stage_val, stage_time); % Compute only once
+        end
+
         % Call preprocessing and fitting function
         BinarySelect = double(factors); % Convert logical to numeric
-        [X, BinData, ModelSpec, res_table] = preprocess_GUI(BinarySelect, InteractSelect, hist_choice, EEG, Fs, stage_val, stage_time);
+        [X, BinData, ModelSpec] = preprocess_GUI(BinarySelect, InteractSelect, hist_choice, EEG, Fs, stage_val, stage_time,res_table);
 
         % Generate the overview figure in a new window
         plot_overview_GUI(EEG, res_table, X, BinData, ModelSpec);
@@ -158,7 +206,7 @@ end
 
 % ****************************HELPER FUNCTIONS*************************
 % Preprocess Function
-function [X, BinData, ModelSpec,res_table] = preprocess_GUI(BinarySelect, InteractSelect, hist_choice, EEG, Fs, stage_val, stage_time)
+function [X, BinData, ModelSpec] = preprocess_GUI(BinarySelect, InteractSelect, hist_choice, EEG, Fs, stage_val, stage_time,res_table)
     % Ensure required inputs are provided
     if isempty(EEG) || isempty(Fs) || isempty(stage_val) || isempty(stage_time)
         error('EEG, Fs, stage_val, and stage_time must be provided.');
@@ -170,10 +218,12 @@ function [X, BinData, ModelSpec,res_table] = preprocess_GUI(BinarySelect, Intera
     binsize = 0.1; % Bin size in seconds
     hard_cutoffs = [12, 16]; % Frequency range for fast spindles
 
-    % Compute spindle events and their properties
-    disp('May take minutes ... Extracting spindles ...');
-    [res_table] = eegToEventSignal(EEG, Fs, stage_val, stage_time);
-
+    % Compute spindle events and their properties only when it is empty
+    if isempty(res_table)
+        disp('May take minutes ... Extracting spindles ...');
+        res_table = eegToEventSignal(EEG, Fs, stage_val, stage_time);
+    end
+    
     % Convert event data to binned data
     [BinData] = rawToBinData(res_table, Fs, binsize, hard_cutoffs, hist_choice);
     disp('Data preprocessing complete.');
@@ -315,7 +365,7 @@ function plot_overview_GUI(EEG,res_table,X, BinData, ModelSpec)
     linkaxes([ax1, ax2, ax3, ax5, ax6, ax7], 'x');
     scrollzoompan(ax7, 'x');
 
-        %--------------------- Right panel -----------------------
+    %--------------------- Right panel -----------------------
     % 1) Plot Polarhistogram
     ax4 = subplot(7, 3, [3 6 9]); % Define subplot location
     phasehistogram(phase(y==1),1,'NumBins',50); 

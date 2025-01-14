@@ -19,7 +19,8 @@ function [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinDa
 %          --exc_period: excited period(s)
 %          --p_time: peak time (s)
 %          --p_height: peak height
-%          --AUC_is: area under infraslow period (40 - 70) sec
+%          --AUC_is: area under infraslow period (40 - 70) sec ,only when
+%                   'long' history is specified 
 %
 %
 % Please provide the following citation for all use:
