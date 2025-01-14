@@ -327,15 +327,18 @@ The contents of the "toolbox" folder is organized as follows, with key functions
 ├── image_folder/  Contains all saved figures
 └── helper_function/  Contains all functions
     ├── major_fxn/   
-    │         - xxx.m: xxx
-    ├── GUI_fxn/   
-    │         - xxx.m
-    ├── TFsigma_peak_detector/
-    │         - xxx.m
-    ├── helper_fxn/
-    │         - xxx.m
-    └── helper_functions/
-              - Contains various utility functions for spectral estimation and plotting
+    │         - specify_mdl.m: Model specifications
+    │         - preprocessToDesignMatrix.m: Data preprocessing 
+    │         - plot_hist_curve.m: History modulation curve
+    │         - plot_stage_prefphase.m: SO preferred phase as a function of sleep stage
+    │         - plot_sop_prefphase.m: SO preferred phase as a function of SO power
+    │         - KSplot.m: KS statistics, plot, and test
+    │         - compute_dev_exp.m: Proportional deviance explained for each factor
+    ├── TFsigma_peak_detector/ Contains the spindle detection algorithm
+    │       
+    └── utils/	Contains various utility functions
+        
+
 ```
 
 
@@ -355,5 +358,5 @@ All implementations are functional, but are subject to refine.
 <br/>
 Next optimization, deal with perfect predictors (e.g., Wake and REM stage) to save runtime.
 <br/>
-Last updated by SC, 12/30/2024
+Last updated by SChen (shuqiang@bu.edu), 01/14/2025
 
