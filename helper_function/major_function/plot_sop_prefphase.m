@@ -42,7 +42,7 @@ if any(ismember_interaction(ModelSpec.InteractSelect,{'SOpower:SOphase'}))
     end
     
     %% Confidence interval for SOP PP shift curve
-    M = 10000;          % sampling size
+    M = 5000;          % sampling size, 10000 is used in the paper
     bMC = mvnrnd(b,stats.covb,M)';
     pp_sop_lohi = zeros(length(sop0),2);
     
