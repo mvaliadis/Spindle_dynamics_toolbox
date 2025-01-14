@@ -167,8 +167,7 @@ Here are the function inputs and outputs:
   <b>Figure 1: History Modulation Curve </b>
 </p>
 
-This function generates the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. Here we show the Figure 2 in the paper for illustration purpose. 
-
+This function generates the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. Here we show the Figure 2 from the paper for illustration purpose, but check the [Overview of Spindle Dynamics Figure](#quick-start) for the history curve of this example subject.
 
 ### 2. Spindle Preferential SO Phase Shifts With Sleep Depth
 Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep stage. 
