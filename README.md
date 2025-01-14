@@ -84,8 +84,11 @@ The following GUI should be generated (shown below, left panel):
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/GUI2.png" width="700" />
 </p> 
+<p align="center">
+  <b> Quick Start GUI </b>
+</p>
 
-Let's follow the 4 steps to make the choices. Here, we provide an example of the settings (above, right panel), which specifies the model we primarily used in the paper:
+Let's follow the 4 steps to make the choices. Here, we provide an example of the settings (shown above, right panel), which specifies the model we primarily used in the paper:
 
 <ol>
     <li>Load data: Load <a href="https://github.com/preraulab/Spindle_dynamics_toolbox/tree/master/example_data" target="_blank">Example Data</a>, which is the same <a href="https://www.sleepdata.org/datasets/mesa" target="_blank">MESA</a> subject as in Figure 6 from the paper.</li>
@@ -108,17 +111,15 @@ Use the scrollzoompan interface to slide and play around with the figure. To vie
 #### To load your own data
 Click on "Load User Data", it allows you to browse and load your own data. Ensure your data file meets the following requirements:
 
-1. **File Format**:
+1. **File format**:
    - The file must be a `.mat` file (MATLAB file format).
 
-2. **ALL Required Variables**:
-   - The `.mat` file must contain the following variable names:
+2. **Required variables in the file**:
+   - The `.mat` file must contain all the following variable names:
      - **`EEG`**: (double,1D vector) raw EEG data.
      - **`Fs`**: (double,scalar) Sampling frequency of the EEG data in Hz.
      - **`stage_val`**: (double,1D vector) Sleep stages(1: N3; 2: N2; 3:N1; 4:REM; 5:Wake).
      - **`stage_time`**: (double,1D vector) Corresponding times for the sleep stages in sec
-If any variable is missing, the file will not be processed.
-
 
 ## Model Results And Visualizations
 In this section, we will walk through the example script, highlighting the major functions. If you would like to generate all figures with a single click, simply execute the example script:
