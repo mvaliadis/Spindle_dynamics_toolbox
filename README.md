@@ -321,7 +321,7 @@ The contents of the "toolbox" folder is organized as follows, with key functions
 ```
 .REPO_ROOT
 ├── quick_start.m:         Quick start GUI to generate an overview figure to allow users to explore
-├── Example_Script.m:      Main script to walk through main results step by step, from raw data to model results and visulizations
+├── Example_Script.m:      Main script, from raw data to model results and visulizations
 │                          Uses example data contained in example_data folder.│   
 ├── example_data/  Contains example data
 ├── image_folder/  Contains all saved figures
