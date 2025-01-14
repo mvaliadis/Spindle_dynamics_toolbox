@@ -317,5 +317,3 @@ factors = {'Stage'; 'Phase'; 'History'};
 Table1 = table(factors, 100*dev_exp_sta', 'VariableNames', {'Factor', 'Deviance Explained %'});
 disp(Table1);
 
-
-%% Save other result as a table
