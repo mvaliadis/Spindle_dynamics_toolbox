@@ -99,7 +99,7 @@ Let's follow the 4 steps to make the choices. Here, we provide an example of the
 
 Once you clicked on "Run the Model" button, an overview figure will be generated for users to explore (shown below):
 
-<p align="center">
+<p id="overview-figure" align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/overview_fig.png" width="900" />
 </p> 
 <p align="center">
@@ -167,7 +167,7 @@ Here are the function inputs and outputs:
   <b>Figure 1: History Modulation Curve </b>
 </p>
 
-This function generates the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. Here we show the Figure 2 from the paper for illustration purpose, but check the [Overview of Spindle Dynamics Figure](#quick-start) for the history curve of this example subject.
+This function generates the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. Here we show the Figure 2 from the paper for illustration purpose, but check the For a detailed visualization, refer to the <a href="#overview-figure">Overview of the spindle dynamics</a> figure. for the history curve of this example subject.
 
 ### 2. Spindle Preferential SO Phase Shifts With Sleep Depth
 Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep stage. 
