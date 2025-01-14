@@ -20,8 +20,8 @@ To clone the Spindle_dynamics_toolbox.git repository to your own computer or rem
 ## Table of Contents
 * [Background and Toolbox Overview](#background-and-toolbox-overview)
 * [Quick Start](#quick-start)
+* [Raw Data to Model Fitting](#raw-data-to-model-fitting)
 * [Model Results And Visualizations](#model-results-and-visualizations)
-* [Run Your Own Data](#run-your-own-data)
 * [Repository Structure](#repository-structure)
 * [Citations](#citations)
 * [Status](#status)
@@ -121,8 +121,99 @@ Click on "Load User Data", it allows you to browse and load your own data. Ensur
      - **`stage_val`**: (double,1D vector) Sleep stages(1: N3; 2: N2; 3:N1; 4:REM; 5:Wake).
      - **`stage_time`**: (double,1D vector) Corresponding times for the sleep stages in sec
 
+## Raw Data to Model Fitting
+In this section, we will walk through the data loading, preprocessing, model specification, and model fitting steps in the example script, highlighting the major functions. To run everything and generate all figures with a single command, simply execute the example script:
+
+``` matlab
+ > example_script;
+```
+
+### Model Specification
+
+``` matlab
+[ModelSpec] = specify_mdl(BinarySelect,InteractSelect,'hist_choice',hist_choice,'control_pt',control_pt);
+```
+
+``` matlab
+% Input:
+%       <Required inputs>
+%       - BinarySelect: (1x4 vector, double), indicates which factors are selected by the user
+%         Factors are with fixed order: SOphase, stage, SOpower,history
+%         e.g., [1,1,0,1] means select SOphase, stage, and history as model components 
+%       - InteractSelect: (1xn cell), each entry contains an interaction term in the form of A:B 
+%         It is case,order-insensitive, and accept multipler separators including:':', '&', and '-'
+%         n is the number of interactions. For example, we can add 2 interactions
+%         e.g., {'stage:SOphase', 'stage:history'} 
+%
+%       <Optional inputs>
+%       - hist_choice: (string), it is either 'short'(default) or 'long'
+%                   'short': Short term history (up to 15 secs, this option runs fast)
+%                   'long': Long term history (up to 90 secs, use this to show infraslow structure)
+%       - control_pt: (1xk vector,double), spline control point location, k is the number of control points
+%                    default: [0:15:90 120 150]
+%       - binsize: (double), point process bin size in sec, default: 0.1 sec
+%       - hard_cutoffs:(1x2 vector,double), frequency cutoff in Hz
+%                      default:[12 16], choose events in 12 to 16 Hz as fast spindles
+%       
+% Output:
+%       ModelSpec: A struct that contains all model specifications
+%
+% Example 1: BinarySelect = [1,1,0,1];                     
+%            InteractSelect = {'stage:SOphase'};          
+%            [ModelSpec] = specify_mdl_factor(BinarySelect,InteractSelect);
+```
+
+
+### Data Loading And Preprocessing
+The first function applys the watershed algorithm to extract time-frequency peaks
+``` matlab
+computeTFPeaks(data, Fs, stage_vals, stage_times, <options>);
+```
+
+``` matlab
+% Input(All Required):
+%       - EEG: (double, 1D), raw EEG data              
+%       - Fs: (double, scalar), sampling frequency in Hz   
+%       - stage_val: (double, 1D), stage values 
+%                   where 1,2,3,4,5 represent N3,N2,N1,REM,and Wake
+%       - stage_time:(double, 1D), corresponding time of the stage
+%       - ModelSpec: A struct that contains all model specifications
+%
+% Output: 
+%       - X (double, matrix): Design Matrix, the size depends on data length and ModelSpec
+%       - BinData (struct): A struct that has all data saved in binsize 
+%       - res_table: (table) All event info and signals to use. Key components include:
+%           -- peak_ctimes: (cell), detected event central times (s)
+%           -- peak_freqs: (cell), detected event frequency (Hz)
+%           -- SOpow: (cell), slow oscillation power
+%           -- SOphase: (cell), slow oscillation phase
+```
+
+
+
+It uses the following inputs:
+``` matlab
+%       data (req):                [1xn] double - timeseries data to be analyzed
+%       Fs (req):                  double - sampling frequency of data (Hz)
+%       stage_vals (req):          [1xm] double - sleep stage values at eaach time in
+%                                  stage_times. Note the staging convention: 0=unidentified, 1=N3,
+%                                  2=N2, 3=N1, 4=REM, 5=WAKE
+%       stage_times (req):         [1xm] double - timestamps of stage_vals
+%       t_data (opt):              [1xn] double - timestamps for data. Default = (0:length(data)-1)/Fs;
+```
+The outputs are:
+``` matlab
+%       stats_table:  table - time, frequency, height, SOpower, and SOphase
+%                     for each TFpeak
+%       spect:        2D double - spectrogram of data
+%       stimes:       1D double - timestamp bin center values for dimension 2 of
+%                     spect
+```
+
+
+
 ## Model Results And Visualizations
-In this section, we will walk through the example script, highlighting the major functions. If you would like to generate all figures with a single click, simply execute the example script:
+In this section, we will walk through results part in the example script, highlighting the major functions. If you would like to generate all figures with a single click, simply execute the example script:
 
 ``` matlab
  > example_script;
