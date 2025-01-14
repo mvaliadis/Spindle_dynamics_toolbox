@@ -222,7 +222,7 @@ In this section, we will walk through results part in the example script, highli
 
 ### 1. History Modulation Curve 
 The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/plot_hist_curve.m) function:
-
+Usage:
 ``` matlab
   [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinData)
 ```
@@ -264,6 +264,7 @@ This function generates the history modulation curve and save history features i
 ### 2. Spindle Preferential SO Phase Shifts With Sleep Depth
 Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep stage. 
 
+Usage:
 ``` matlab
   plot_stage_prefphase(XXX)
 ```
@@ -284,6 +285,7 @@ Sleep spindles have been widely reported to preferentially occur in the cortical
 
 If the model is correct, the time-rescaling theorem can be used to remap the event times into a homogenous Poisson process. After rescaling, Kolmogorov-Smirnov (KS) plots can be used to compare the distribution of inter-spindle-intervals to those predicted by the model. A well-fit model will produce a KS plot that closely follows a 45-degree line and stays within its significance bounds (black). KS plots that are not contained in these bounds (red) suggest lack-of-fit in the model. Use the [KSplot.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/KSplot.m) function to generate the KS plot, compute KS statistics, and output KS test results.
 
+Usage:
 ``` matlab
   KSplot(XXX);
 ```
@@ -298,6 +300,7 @@ If the model is correct, the time-rescaling theorem can be used to remap the eve
 ### 4. Short-Term History Contributes the Most to Statistical Deviance, Surpassing Other Factors
 The modeling framework allows us to quantitatively compare the relative contributions of these factors through deviance analysis, which is the point process equivalent of an analysis of model variance in linear regression. Use the [compute_dev_exp.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/compute_dev_exp.m) function to compute proportional deviance explained by each factor.
 
+Usage:
 ``` matlab
   compute_dev_exp(XXX);
 ```
@@ -308,43 +311,6 @@ The modeling framework allows us to quantitatively compare the relative contribu
 <p align="center">
   <b>Figure 4: Proportional Deviance Explained By Different Factors </b>
 </p>
-
-
-
-## Run Your Own Data
-This section introduces how users can load and analyze their own data using this toolbox. Users can leverage the main_script with two major functions for model specification (specify_mdl.m) and Data Loading and Preprocessing (preprocessToDesignMatrix.m).
-<p>For an exploratory overview figure, users can also use the <a href="#quick-start">Quick Start</a> GUI before diving into detailed analyses.</p>
-
-### Model Specification
-
-
-
-### Data Loading And Preprocessing
-The first function applys the watershed algorithm to extract time-frequency peaks
-``` matlab
-computeTFPeaks(data, Fs, stage_vals, stage_times, <options>);
-```
-It uses the following inputs:
-``` matlab
-%       data (req):                [1xn] double - timeseries data to be analyzed
-%       Fs (req):                  double - sampling frequency of data (Hz)
-%       stage_vals (req):          [1xm] double - sleep stage values at eaach time in
-%                                  stage_times. Note the staging convention: 0=unidentified, 1=N3,
-%                                  2=N2, 3=N1, 4=REM, 5=WAKE
-%       stage_times (req):         [1xm] double - timestamps of stage_vals
-%       t_data (opt):              [1xn] double - timestamps for data. Default = (0:length(data)-1)/Fs;
-```
-The outputs are:
-``` matlab
-%       stats_table:  table - time, frequency, height, SOpower, and SOphase
-%                     for each TFpeak
-%       spect:        2D double - spectrogram of data
-%       stimes:       1D double - timestamp bin center values for dimension 2 of
-%                     spect
-```
-### Load User Data In Quick Start GUI
-
-
 
 
 
