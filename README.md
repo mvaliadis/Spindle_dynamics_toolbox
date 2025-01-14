@@ -115,11 +115,11 @@ Click on "Load User Data", it allows you to browse and load your own data. Ensur
    - The file must be a `.mat` file (MATLAB file format).
 
 2. **Required variables in the file**:
-   - The `.mat` file must contain all the following variable names:
-     - **`EEG`**: (double,1D vector) raw EEG data.
-     - **`Fs`**: (double,scalar) Sampling frequency of the EEG data in Hz.
-     - **`stage_val`**: (double,1D vector) Sleep stages(1: N3; 2: N2; 3:N1; 4:REM; 5:Wake).
-     - **`stage_time`**: (double,1D vector) Corresponding times for the sleep stages in sec
+   - The `.mat` file must contain all the 4 variables (variable names are case-insensitive): 
+     - **`EEG`**: (double,1D vector) raw EEG data. Other accepted names: 'eeg_data', 'raw_EEG','data'  	 
+     - **`Fs`**: (double,scalar) Sampling frequency of the EEG data in Hz. Other accepted names: 'sampling_rate'  
+     - **`stage_val`**: (double,1D vector) Sleep stages(1: N3; 2: N2; 3:N1; 4:REM; 5:Wake). Other accepted names: 'stage_vals', 'stages','stage','stageval','stagevals'
+     - **`stage_time`**: (double,1D vector) Corresponding times for the sleep stages in sec. Other accepted names: 'stage_t', 'time_stages','stage_t','stage_times'
 
 ## Raw Data to Model Fitting
 In this section, we will walk through the data loading, preprocessing, model specification, and model fitting steps in the example script, highlighting the major functions. To run everything and generate all figures with a single command, simply execute the example script:
