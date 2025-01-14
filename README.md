@@ -112,15 +112,12 @@ Click on "Load User Data", it allows you to browse and load your own data. Ensur
    - The file must be a `.mat` file (MATLAB file format).
 
 2. **ALL Required Variables**:
-   - The `.mat` file must contain the following variables:
-     - **`EEG`**: raw EEG data.
-     - **`Fs`**: Sampling frequency of the EEG data.
-     - **`stage_val`**: Sleep stage values (e.g., numerical or categorical representation of sleep stages).
-     - **`stage_time`**: Corresponding times for the sleep stages.
-If any field is missing, the file will not be processed.
-
-3. **File Accessibility**:
-   - Ensure the file is accessible and can be successfully loaded using MATLAB's `load` function.
+   - The `.mat` file must contain the following variable names:
+     - **`EEG`**: (double,1D vector) raw EEG data.
+     - **`Fs`**: (double,scalar) Sampling frequency of the EEG data in Hz.
+     - **`stage_val`**: (double,1D vector) Sleep stages(1: N3; 2: N2; 3:N1; 4:REM; 5:Wake).
+     - **`stage_time`**: (double,1D vector) Corresponding times for the sleep stages in sec
+If any variable is missing, the file will not be processed.
 
 
 ## Model Results And Visualizations
