@@ -129,6 +129,7 @@ In this section, we will walk through the data loading, preprocessing, model spe
 ```
 
 ### Model Specification
+The `specify_mdl` consolidates all model specifications provided by users, including the model factors (`BinarySelect`), interactions to include(`InteractSelect`), and other additional options. These specifications are returned as a structured array (`ModelSpec`). 
 
 ``` matlab
 [ModelSpec] = specify_mdl(BinarySelect,InteractSelect,'hist_choice',hist_choice,'control_pt',control_pt);
@@ -165,7 +166,7 @@ In this section, we will walk through the data loading, preprocessing, model spe
 
 
 ### Data Preprocessing
-This function extracts spindle event information (`res_table`), saves preprocessed binned data (`BinData`), and design matrix (`X`) for model fitting.
+The `preprocessToDesignMatrix` function extracts spindle event information (`res_table`), saves preprocessed binned data (`BinData`), and design matrix (`X`) for model fitting.
 
 ``` matlab
 [X, BinData,res_table] = preprocessToDesignMatrix(EEG, Fs, stage_val, stage_time,ModelSpec);
