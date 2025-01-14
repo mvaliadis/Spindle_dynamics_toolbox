@@ -128,23 +128,49 @@ In this section, we will walk through the example script, highlighting the major
  > example_script;
 ```
 
-
-### History Modulation Curve 
-The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/plot_hist_curve.m) function to generate the history modulation curve and save results.
+### 1. History Modulation Curve 
+The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/plot_hist_curve.m) function:
 
 ``` matlab
-  plot_hist_curve(XXX)
+  [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinData)
+```
+Here are the function inputs and outputs:
+
+``` matlab
+% Input:
+%       -stats (struct), results after model fitting 
+%       -ModelSpec (struct), model specifications
+%       -BinData, (struct), binned data
+%
+% Output:
+%       -xlag (n x 1 vector), history time lag in sec
+%       -yhat (n x k vector), history modulation value
+%       -yu (n x k vector), history curve 95% confidence interval (upper)
+%       -yl (n x k vector), history curve 95% confidence interval (lower)
+%       Note: k = 1 when single history curve is computed
+%             k = 2 when N2 and N3 history curve are computed, 
+%               in which case, 1st col means N2 history, 2nd col means N3 history
+%             n is determined by history lag and sp_resol (n = history lag in bin / sp_resol)
+%       -hist_features (struct), it contains all history features, including
+%          --ref_period: refractory period (s)
+%          --exc_period: excited period(s)
+%          --p_time: peak time (s)
+%          --p_height: peak height
+%          --AUC_is: The infraslow multiplier. Area under infraslow period (40s to 70s) / 30
+%	-A history modulation figure
 ```
 
 <p align="center">
-<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/hist_fig1.png" width="900" />
+<img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/hist_fig1.png" width="800" />
 </p> 
 <p align="center">
   <b>Figure 1: History Modulation Curve </b>
 </p>
 
+This function generates the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. Here we show the Figure 2 in the paper for illustration purpose. 
 
-### Spindle Preferential SO Phase Shifts With Sleep Depth
+
+### 2. Spindle Preferential SO Phase Shifts With Sleep Depth
 Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep stage. 
 
 ``` matlab
@@ -163,7 +189,7 @@ Sleep spindles have been widely reported to preferentially occur in the cortical
   <b>Figure 2: Phase Shift: Stage vs. SO Power </b>
 </p>
 
-### Model With History Greatly Improves Model Performance
+### 3. Model With History Greatly Improves Model Performance
 
 If the model is correct, the time-rescaling theorem can be used to remap the event times into a homogenous Poisson process. After rescaling, Kolmogorov-Smirnov (KS) plots can be used to compare the distribution of inter-spindle-intervals to those predicted by the model. A well-fit model will produce a KS plot that closely follows a 45-degree line and stays within its significance bounds (black). KS plots that are not contained in these bounds (red) suggest lack-of-fit in the model. Use the [KSplot.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/KSplot.m) function to generate the KS plot, compute KS statistics, and output KS test results.
 
@@ -178,7 +204,7 @@ If the model is correct, the time-rescaling theorem can be used to remap the eve
   <b>Figure 3: KS plot for models with different components </b>
 </p>
 
-### Short-Term History Contributes the Most to Statistical Deviance, Surpassing Other Factors
+### 4. Short-Term History Contributes the Most to Statistical Deviance, Surpassing Other Factors
 The modeling framework allows us to quantitatively compare the relative contributions of these factors through deviance analysis, which is the point process equivalent of an analysis of model variance in linear regression. Use the [compute_dev_exp.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/compute_dev_exp.m) function to compute proportional deviance explained by each factor.
 
 ``` matlab
