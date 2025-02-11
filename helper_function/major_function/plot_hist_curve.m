@@ -3,7 +3,7 @@ function [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinDa
 % Input:
 %       -stats (struct), results after model fitting 
 %       -ModelSpec (struct), model specifications
-%       -BinData, (struct), binned data
+%       -BinData (struct), binned data
 %
 % Output:
 %       -xlag (n x 1 vector), history time lag in sec
@@ -19,7 +19,7 @@ function [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinDa
 %          --exc_period: excited period(s)
 %          --p_time: peak time (s)
 %          --p_height: peak height
-%          --AUC_is: area under infraslow period (40 - 70) sec ,only when
+%          --AUC_is: area under infraslow period (40-70) sec ,only when
 %                   'long' history is specified 
 %
 %

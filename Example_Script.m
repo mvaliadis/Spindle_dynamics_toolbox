@@ -228,7 +228,7 @@ title('N3',FontSize=12)
 
 %----------- Stage PP shift 
 axes(ax(4))
-plot_stage_prefphase(b,stats,ModelSpec);
+[pp,pp_CI] = plot_stage_prefphase(b,stats,ModelSpec);
 title('Model With Stage')
 
 %----------- Stage percentage
@@ -249,7 +249,7 @@ set(ax(5), 'Position', positionAdj);% Set the new position
 
 %----------- SOP PP shift curve
 axes(ax(6))
-plot_sop_prefphase(b_sop,stats_sop,ModelSpec_sop);
+[phi0,sop0,sop_pp_mat] = plot_sop_prefphase(b_sop,stats_sop,ModelSpec_sop);
 ylim([3 25])
 set(gca,'YColor','none')
 

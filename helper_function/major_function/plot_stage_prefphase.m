@@ -1,6 +1,17 @@
-function [] = plot_stage_prefphase(b,stats,ModelSpec)
+function [pp,pp_CI] = plot_stage_prefphase(b,stats,ModelSpec)
 % PLOT_STAGE_PREFPHASE generates a figure showing preferred phase in N1,N2, and N3 stage
-% Add outputs later
+% Input:
+%       -b (double), fitted model parameters 
+%       -stats (struct), all results after model fitting 
+%       -ModelSpec (struct), model specifications
+%
+% Output:
+%       -A figure that shows how preferred phase changes with sleep stage
+%       -pp (3x1,double), preferred phase (rad) for N1, N2, and N3 stage
+%       -pp_CI (3x2,double), 95% CI for preferred phase in N1, N2, and N3 stage
+%                           1st column (lower bound for each stage)
+%                           2nd column (upper bound for each stage)
+%
 %
 % Please provide the following citation for all use:
 %       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
@@ -8,6 +19,7 @@ function [] = plot_stage_prefphase(b,stats,ModelSpec)
 %       PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
 %
 % Created by SChen 123124
+% Last updated, SChen 010725
 %******************************************************************************************************************************************
 
 %% stage:SOphase must be specified to generate this
@@ -17,10 +29,12 @@ if any(ismember_interaction(ModelSpec.InteractSelect,{'stage:SOphase'}))
     pp_n1 = atan2(b(3)+b(12),b(2)+b(8)); % pref phase for N1
     pp_n2 = atan2(b(3),b(2));            % pref phase for N2
     pp_n3 = atan2(b(3)+b(13),b(2)+b(9)); % pref phase for N3
+    pp = [pp_n1; pp_n2; pp_n3];            % Save outputs
+
     % mag_n1 = sqrt((b(3)+b(12))^2 + (b(2)+b(8))^2); % coupling magnitude for N1
     % mag_n2 = sqrt(b(3)^2 + b(2)^2);                % coupling magnitude for N2
     % mag_n3 = sqrt((b(3)+b(13))^2 + (b(2)+b(9))^2); % coupling magnitude for N3
-    
+
     %% Evaluate rate ~ phase from the model
     % Initialization
     phi0 = linspace(-pi,pi,500)';
@@ -84,7 +98,7 @@ if any(ismember_interaction(ModelSpec.InteractSelect,{'stage:SOphase'}))
     pp_CI = [pp_n1_lohi + pp_n1; pp_n2_lohi + pp_n2; pp_n3_lohi + pp_n3];
     
     %% Prepare for figure
-    % Do not plot CI when it crosses [-pi pi]
+    % Choose not to plot CI if it crosses [-pi pi]
     pp_CI_plot = pp_CI;
     for i = 1:size(pp_CI,1)
         if pp_CI(i,1)<-pi||pp_CI(i,2)>pi
@@ -101,6 +115,7 @@ if any(ismember_interaction(ModelSpec.InteractSelect,{'stage:SOphase'}))
     stage_pp_mat(:,1:200)   = repmat(y_n1,1,200);
     stage_pp_mat(:,201:400) = repmat(y_n2,1,200);
     stage_pp_mat(:,401:600) = repmat(y_n3,1,200);
+
     
     %% Figure
     

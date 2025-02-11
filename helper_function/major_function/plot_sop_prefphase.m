@@ -1,6 +1,17 @@
-function [] = plot_sop_prefphase(b,stats,ModelSpec)
+function [phi0,sop0,sop_pp_mat] = plot_sop_prefphase(b,stats,ModelSpec)
 % PLOT_SOP_PREFPHASE plots preferred phase as a function of continuous SOP
-% Add outputs later
+% Input:
+%       -b (double), fitted model parameters 
+%       -stats (struct), all results after model fitting 
+%       -ModelSpec (struct), model specifications
+%
+% Output:
+%       -A figure that shows how preferred phase changes with continuous SOP
+%       -phi0 (500x1, double), phase stamps for evaluation, 500 evenly spaced points from -pi to pi 
+%       -sop0 (510x1,double), SOP stamps for evaluation, 510 evenly spaced points from -5 to 30
+%       -sop_pp_mat (510x500 matrix,double), spindle rate heatmap as a function of (phi0,sop), 
+%                                            in unit of events per binsize
+%
 %
 % Please provide the following citation for all use:
 %       Shuqiang Chen,Mingjian He,Ritchie E. Brown, Uri T. Eden, Michael J Prerau, 
@@ -65,7 +76,7 @@ if any(ismember_interaction(ModelSpec.InteractSelect,{'SOpower:SOphase'}))
     pp_CI = [pp_sop_lohi(:,1) + pp_sop pp_sop_lohi(:,2) + pp_sop];
     
     %% Prepare for figure
-    % Do not plot CI when it crosses [-pi pi]
+    % Choose not to plot CI if it crosses [-pi pi]
     pp_CI_plot = pp_CI;
     
     % for i = 1:size(pp_CI,1)
@@ -76,12 +87,13 @@ if any(ismember_interaction(ModelSpec.InteractSelect,{'SOpower:SOphase'}))
     % end
     
     %% Figure
-    sop = sop0*5;
-    imagesc(phi0,sop,sop_pp_mat*60/ModelSpec.binsize); hold on;
+    sop0 = sop0*5;
+    imagesc(phi0,sop0,sop_pp_mat*60/ModelSpec.binsize); % spindle rate heatmap, transform to events/min
+    hold on;
     colormap(gca,viridis);
-    plt_pp = plot(pp_sop,sop,'r',LineWidth = 3);
-    plt_ci = plot(pp_CI_plot(:,1),sop,'r--');
-             plot(pp_CI_plot(:,2),sop,'r--');
+    plt_pp = plot(pp_sop,sop0,'r',LineWidth = 3);
+    plt_ci = plot(pp_CI_plot(:,1),sop0,'r--');
+             plot(pp_CI_plot(:,2),sop0,'r--');
     xlim([-pi pi])
     
     set(gca,'YTick',[],'XTick',[])

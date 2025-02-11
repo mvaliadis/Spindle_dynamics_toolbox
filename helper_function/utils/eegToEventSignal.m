@@ -23,9 +23,6 @@ function [res_table]  = eegToEventSignal(EEG,Fs,stage_val,stage_time)
 % Last updated, SChen 010725
 % *****************************************************************
 
-%% Deal with inputs
-% Use sample data if data is not provided
-
 %% Presettings
 
 N = length(EEG);
@@ -116,6 +113,5 @@ res_table.SOphase{:} = phase_raw;
 
 %save(fullfile(savefolder_name, ['Example',num2str(ID),'_night',num2str(night),'_EventSignal.mat']), 'res_table', '-v7.3');
 %save(['Example',num2str(ID),'_nt',num2str(night),'_EventSignal.mat'], 'res_table', '-v7.3');
-
 
 end

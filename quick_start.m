@@ -1,6 +1,5 @@
 function quick_start
-% QUICK_START starts a GUI to allow users to specify model and 
-% generate an overview figure
+% QUICK_START starts a GUI to allow users to specify model and generate an overview figure
 %
 % STEPS:
 %         1) load data (example data or their own data)
@@ -25,7 +24,7 @@ function quick_start
 % Last updated, SChen 010725
 %******************************************************************************************************************************************
 
-%%    
+%% GUI   
     % Add path
     addpath(genpath('./helper_function'))
 
@@ -101,59 +100,58 @@ function quick_start
 
     
     % Function to load user data
-   % Function to load user data
-function loadUserData()
-    [file, path] = uigetfile('*.mat', 'Select Data File');
-    if isequal(file, 0)
-        dataStatusLabel.Text = 'User canceled data selection.';
-    else
-        try
-            loadedData = load(fullfile(path, file)); % Load user-selected file
-            
-            % Check for potential variable names for each required field
-            EEG_names = {'EEG', 'eeg_data', 'raw_EEG','data'}; % Possible names for EEG
-            Fs_names = {'Fs', 'sampling_rate'}; % Possible names for Fs
-            stage_val_names = {'stage_val', 'stage_vals', 'stages','stage','stageval','stagevals'}; % Possible names for stage values
-            stage_time_names = {'stage_time', 'stage_t', 'time_stages','stage_t','stage_times'}; % Possible names for stage times
-
-            % Initialize variables
-            EEG = [];
-            Fs = [];
-            stage_val = [];
-            stage_time = [];
-
-            % Check each field in loadedData
-            fields = fieldnames(loadedData);
-
-            % Match and assign the appropriate variable
-            for i = 1:length(fields)
-                field = fields{i};
-                if any(strcmpi(field, EEG_names))
-                    EEG = double(loadedData.(field));
-                elseif any(strcmpi(field, Fs_names))
-                    Fs = double(loadedData.(field));
-                elseif any(strcmpi(field, stage_val_names))
-                    stage_val = double(loadedData.(field));
-                elseif any(strcmpi(field, stage_time_names))
-                    stage_time = double(loadedData.(field));
+    function loadUserData()
+        [file, path] = uigetfile('*.mat', 'Select Data File');
+        if isequal(file, 0)
+            dataStatusLabel.Text = 'User canceled data selection.';
+        else
+            try
+                loadedData = load(fullfile(path, file)); % Load user-selected file
+                
+                % Check for potential variable names for each required field
+                EEG_names = {'EEG', 'eeg_data', 'raw_EEG','data'}; % Possible names for EEG
+                Fs_names = {'Fs', 'sampling_rate'}; % Possible names for Fs
+                stage_val_names = {'stage_val', 'stage_vals', 'stages','stage','stageval','stagevals'}; % Possible names for stage values
+                stage_time_names = {'stage_time', 'stage_t', 'time_stages','stage_t','stage_times'}; % Possible names for stage times
+    
+                % Initialize variables
+                EEG = [];
+                Fs = [];
+                stage_val = [];
+                stage_time = [];
+    
+                % Check each field in loadedData
+                fields = fieldnames(loadedData);
+    
+                % Match and assign the appropriate variable
+                for i = 1:length(fields)
+                    field = fields{i};
+                    if any(strcmpi(field, EEG_names))
+                        EEG = double(loadedData.(field));
+                    elseif any(strcmpi(field, Fs_names))
+                        Fs = double(loadedData.(field));
+                    elseif any(strcmpi(field, stage_val_names))
+                        stage_val = double(loadedData.(field));
+                    elseif any(strcmpi(field, stage_time_names))
+                        stage_time = double(loadedData.(field));
+                    end
                 end
+    
+                % Verify that all required variables are assigned
+                if isempty(EEG) || isempty(Fs) || isempty(stage_val) || isempty(stage_time)
+                    uialert(optionsFig, 'Missing required variables: EEG, Fs, stage_val, or stage_time.', 'Load Error');
+                else
+                    % If all variables are assigned successfully
+                    dataLoaded = true;
+                    res_table = []; % Reset cached res_table since new data is loaded
+                    dataStatusLabel.Text = ['User data loaded: ', file];
+                end
+    
+            catch ME
+                uialert(optionsFig, ['Error loading file: ', ME.message], 'Load Error');
             end
-
-            % Verify that all required variables are assigned
-            if isempty(EEG) || isempty(Fs) || isempty(stage_val) || isempty(stage_time)
-                uialert(optionsFig, 'Missing required variables: EEG, Fs, stage_val, or stage_time.', 'Load Error');
-            else
-                % If all variables are assigned successfully
-                dataLoaded = true;
-                res_table = []; % Reset cached res_table since new data is loaded
-                dataStatusLabel.Text = ['User data loaded: ', file];
-            end
-
-        catch ME
-            uialert(optionsFig, ['Error loading file: ', ME.message], 'Load Error');
         end
     end
-end
 
     % Function to run the model and generate a separate figure
     function runModel()

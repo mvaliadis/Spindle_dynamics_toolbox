@@ -6,7 +6,7 @@ function [BinData] = rawToBinData(res_table,Fs,binsize,hard_cutoffs,hist_choice)
 %       - binsize, (double): bin size in sec
 %       - hard_cutoffs (1x2 vector, double): Freq cutoff to post select fast spindles
 %                      choose events in freq range: [hard_cutoffs(1) hard_cutoffs(2)]
-%       - hist_choice, (string), it is either "short" or "long"
+%       - hist_choice, (string), either "short" or "long"
 %           --'long': Long term history (up to 90 secs, this can show infraslow activity)
 %           --'short': Short term history (up to 15 secs, this option runs fast)
 %
