@@ -15,6 +15,17 @@ To clone the Spindle_dynamics_toolbox.git repository to your own computer or rem
  ##### clone the repository to the folder you created:
 	git clone git@github.com:preraulab/Spindle_dynamics_toolbox.git Spindle_dynamics_toolbox
 
+## Pre-Run Setup and Requirements  
+
+### **Required MATLAB toolboxes for this repository**  
+To run this repository, the following MATLAB toolboxes must be installed:  
+
+- **Signal Processing Toolbox** 
+- **Statistics and Machine Learning Toolbox** 
+- **Parallel Computing Toolbox**  
+
+To install the toolboxes above, in MATLAB, HOME->Add-Ons->Get Add-Ons, the detailed instructions can be found [here](https://www.mathworks.com/help/matlab/matlab_env/get-add-ons.html).
+
  --- 
 
 ## Table of Contents
