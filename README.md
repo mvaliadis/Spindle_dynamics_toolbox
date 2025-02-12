@@ -246,7 +246,7 @@ In this section, we will walk through results part in the example script, highli
 ```
 
 ### 1. History Modulation Curve 
-The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_hist_curve.m) function.
+The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Using the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_hist_curve.m) function, we can plot the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. 
 
 Usage:
 ``` matlab
@@ -285,10 +285,12 @@ Here are the function inputs and outputs:
   <b>Figure 1: History Modulation Curve </b>
 </p>
 
-This function generates the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. Here we show the Figure 2 from the paper for illustration purpose, but check the <a href="#overview-figure">Overview of the spindle dynamics</a> figure for the history curve of this example subject.
+We observe that history modulation begins with a refractory period, during which spindles are less likely to occur. It then ramps up to a peak within an excitatory period, where spindle occurrence is most likely, before gradually decreasing back to 1, suggesting minimal modulation for events that occurred a long time ago. Here we show the Figure 2 in the paper for illustration purpose, but check the <a href="#overview-figure">Overview of the spindle dynamics</a> figure for the history curve of this example subject.
 
 ### 2. Spindle Preferential SO Phase Shifts With Sleep Depth
-Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep stage. 
+Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep depth for this example subject.
+
+We show preferred phase shifts with sleep stage.
 
 Usage:
 ``` matlab
@@ -339,7 +341,7 @@ Here are the function inputs and outputs:
   <b>Figure 2: Phase Shift: Stage vs. SO Power </b>
 </p>
 
-From this figure, we see spindles tend to occur in SO peak (phase ~0) during light sleep, and the preferred phase shifts earlier to the SO rising phase in deeper sleep, for this participant.
+We see spindles tend to occur in SO peak (phase ~0) during light sleep, and the preferred phase shifts earlier to the SO rising phase in deeper sleep, for this participant.
 
 ### 3. Model With History Greatly Improves Model Performance
 
