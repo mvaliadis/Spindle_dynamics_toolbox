@@ -246,7 +246,7 @@ In this section, we will walk through results part in the example script, highli
 ```
 
 ### 1. History Modulation Curve 
-The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/plot_hist_curve.m) function:
+The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_hist_curve.m) function:
 Usage:
 ``` matlab
   [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinData)
