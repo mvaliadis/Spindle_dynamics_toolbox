@@ -20,11 +20,11 @@ To clone the Spindle_dynamics_toolbox.git repository to your own computer or rem
 ### ** 1. Required MATLAB toolboxes for this repository**  
 To run this repository, the following MATLAB toolboxes must be installed:  
 
-- **Signal Processing Toolbox** 
-- **Statistics and Machine Learning Toolbox** 
-- **Parallel Computing Toolbox**  
+- Signal Processing Toolbox
+- Statistics and Machine Learning Toolbox
+- Parallel Computing Toolbox 
 
-To install the toolboxes above, in MATLAB, HOME->Add-Ons->Get Add-Ons, the detailed instructions can be found [here](https://www.mathworks.com/help/matlab/matlab_env/get-add-ons.html).
+To install the toolboxes above, in MATLAB, HOME->Add-Ons->Get Add-Ons. Detailed instructions can be found [here](https://www.mathworks.com/help/matlab/matlab_env/get-add-ons.html).
 
 ### ** 2. Possible Security & Privacy Issues**  
 This repository includes '.mex' files to enable fast execution of the multitaper spectrogram. macOS may block execution due to user's security settings. If you see a security warning window pop up like:  
@@ -66,11 +66,11 @@ Using a rigorous statistical framework, we demonstrate that short-term timing pa
 <h4>1. Quick Start GUI</h4>
 <ul>
     <li>
-        Provides an interactive interface for users to:
+        Provides an interactive interface for users to explore data and create basic visualizations:
         <ul>
             <li>Load example data or upload their own data.</li>
             <li>Specify model factors and add interactions between them.</li>
-            <li>Customize settings to generate an overview figure for exploration.</li>
+            <li>Customize settings to generate an overview figure.</li>
         </ul>
     </li>
 </ul>
