@@ -9,15 +9,15 @@ This is the MATLAB toolbox repository accompanying the spindle temporal dynamics
 
 To clone the Spindle_dynamics_toolbox.git repository to your own computer or remote work station, start by creating a directory for it. Then, within that directory in your terminal, run the clone command.
  
- ##### create an empty folder:
+ #### 1. create an empty folder:
 	mkdir Spindle_dynamics_toolbox
 
- ##### clone the repository to the folder you created:
+ #### 2. clone the repository to the folder you created:
 	git clone git@github.com:preraulab/Spindle_dynamics_toolbox.git Spindle_dynamics_toolbox
 
 ## Pre-Run Setup and Notes
 
-### ** 1. Required MATLAB toolboxes for this repository**  
+#### 1. Required MATLAB toolboxes for this repository
 To run this repository, the following MATLAB toolboxes must be installed:  
 
 - Signal Processing Toolbox
@@ -26,7 +26,7 @@ To run this repository, the following MATLAB toolboxes must be installed:
 
 To install the toolboxes above, in MATLAB, HOME->Add-Ons->Get Add-Ons. Detailed instructions can be found [here](https://www.mathworks.com/help/matlab/matlab_env/get-add-ons.html).
 
-### ** 2. Possible Security & Privacy Issues**  
+#### 2. Possible Security & Privacy Issues
 This repository includes '.mex' files to enable fast execution of the multitaper spectrogram. macOS may block execution due to user's security settings. If you see a security warning window pop up like:  
 > *"multitaper_spectrogram_coder_mex.... not opened ..."*  
 
