@@ -350,7 +350,7 @@ The contents of the "toolbox" folder is organized as follows, with key functions
 │                          Uses example data contained in example_data folder.│   
 ├── example_data/  Contains example data
 ├── image_folder/  Contains all saved figures
-└── helper_function/  Contains all functions
+└── helper_function/  Contains all helper functions and toolboxes
     ├── major_function/   
     │         - specify_mdl.m: Model specifications
     │         - preprocessToDesignMatrix.m: Data preprocessing 
