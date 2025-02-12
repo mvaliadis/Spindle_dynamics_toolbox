@@ -372,12 +372,23 @@ Here are the function inputs and outputs:
   <b>Figure 3: KS plot for models with different components </b>
 </p>
 
+We observe that the model with the stage or phase factor does not pass the KS test. However, the model with a single history component passes the KS test, and the KS statistic is even smaller in the model with all factors.
+
 ### 4. Short-Term History Contributes the Most to Statistical Deviance, Surpassing Other Factors
 The modeling framework allows us to quantitatively compare the relative contributions of these factors through deviance analysis, which is the point process equivalent of an analysis of model variance in linear regression. Use the [compute_dev_exp.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/compute_dev_exp.m) function to compute proportional deviance explained by each factor.
 
 Usage:
 ``` matlab
-  compute_dev_exp(XXX);
+ [dev_exp_sta,dev_exp_sop] = compute_dev_exp(BinData)
+```
+Here are the function inputs and outputs:
+
+``` matlab
+% Input: BinData (struct), all the binned data
+%       
+% Output: 
+%       - dev_exp_sta (double,1x3), deviance explained from [stage, phase, history]
+%       - dev_exp_sop (double,1x3), deviance explained from [SOP, phase, history]
 ```
 
 <p align="center">
@@ -387,7 +398,7 @@ Usage:
   <b>Figure 4: Proportional Deviance Explained By Different Factors </b>
 </p>
 
-
+From the table above, we see that the history component explains the most deviance, surpassing other factors such as sleep stage and SO phase.
 
 
 ## Repository Structure
