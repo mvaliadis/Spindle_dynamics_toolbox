@@ -246,7 +246,8 @@ In this section, we will walk through results part in the example script, highli
 ```
 
 ### 1. History Modulation Curve 
-The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_hist_curve.m) function:
+The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Use the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_hist_curve.m) function.
+
 Usage:
 ``` matlab
   [xlag,yhat,yu,yl,hist_features] = plot_hist_curve(stats,ModelSpec,BinData)
@@ -291,13 +292,45 @@ Sleep spindles have been widely reported to preferentially occur in the cortical
 
 Usage:
 ``` matlab
-  plot_stage_prefphase(XXX)
+  [pp,pp_CI] = plot_stage_prefphase(b,stats,ModelSpec)
 ```
+
+Here are the function inputs and outputs:
 
 ``` matlab
-  plot_sop_prefphase(XXX)
+% Input:
+%       -b (double), fitted model parameters 
+%       -stats (struct), all results after model fitting 
+%       -ModelSpec (struct), model specifications
+%
+% Output:
+%       -A figure that shows how preferred phase changes with sleep stage
+%       -pp (3x1,double), preferred phase (rad) for N1, N2, and N3 stage
+%       -pp_CI (3x2,double), 95% CI for preferred phase in N1, N2, and N3 stage
+%                           1st column (lower bound for each stage)
+%                           2nd column (upper bound for each stage)
 ```
 
+We also show preferred phase shifts with SOP (continuous sleep depth).
+
+``` matlab
+  [phi0,sop0,sop_pp_mat] = plot_sop_prefphase(b,stats,ModelSpec)
+```
+Here are the function inputs and outputs:
+
+``` matlab
+% Input:
+%       -b (double), fitted model parameters 
+%       -stats (struct), all results after model fitting 
+%       -ModelSpec (struct), model specifications
+%
+% Output:
+%       -A figure that shows how preferred phase changes with continuous SOP
+%       -phi0 (500x1, double), phase stamps for evaluation, 500 evenly spaced points from -pi to pi 
+%       -sop0 (510x1,double), SOP stamps for evaluation, 510 evenly spaced points from -5 to 30
+%       -sop_pp_mat (510x500 matrix,double), spindle rate heatmap as a function of (phi0,sop), 
+%                                            in unit of events per binsize
+```
 
 <p align="center">
 <img src="https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/image_folder/ppshift_fig2.png" width="900" />
@@ -306,13 +339,28 @@ Usage:
   <b>Figure 2: Phase Shift: Stage vs. SO Power </b>
 </p>
 
+From this figure, we see spindles tend to occur in SO peak (phase ~0) during light sleep, and the preferred phase shifts earlier to the SO rising phase in deeper sleep, for this participant.
+
 ### 3. Model With History Greatly Improves Model Performance
 
 If the model is correct, the time-rescaling theorem can be used to remap the event times into a homogenous Poisson process. After rescaling, Kolmogorov-Smirnov (KS) plots can be used to compare the distribution of inter-spindle-intervals to those predicted by the model. A well-fit model will produce a KS plot that closely follows a 45-degree line and stays within its significance bounds (black). KS plots that are not contained in these bounds (red) suggest lack-of-fit in the model. Use the [KSplot.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/KSplot.m) function to generate the KS plot, compute KS statistics, and output KS test results.
 
 Usage:
 ``` matlab
-  KSplot(XXX);
+  [ks,ksT] = KSplot(CIF,y,ploton);
+```
+Here are the function inputs and outputs:
+
+``` matlab
+% Input:
+%       - CIF (double), conditional intensity function
+%       - y (double), binary event train
+%       - ploton (double), output KS plot if ploton is 1 
+% Output:
+%       - A KS plot
+%       - ks: KS statistic
+%       - ksT: KS test result, 0 means pass the KS test
+%                              1 means fail to pass the KS test
 ```
 
 <p align="center">
