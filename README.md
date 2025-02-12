@@ -308,7 +308,7 @@ Usage:
 
 ### 3. Model With History Greatly Improves Model Performance
 
-If the model is correct, the time-rescaling theorem can be used to remap the event times into a homogenous Poisson process. After rescaling, Kolmogorov-Smirnov (KS) plots can be used to compare the distribution of inter-spindle-intervals to those predicted by the model. A well-fit model will produce a KS plot that closely follows a 45-degree line and stays within its significance bounds (black). KS plots that are not contained in these bounds (red) suggest lack-of-fit in the model. Use the [KSplot.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/KSplot.m) function to generate the KS plot, compute KS statistics, and output KS test results.
+If the model is correct, the time-rescaling theorem can be used to remap the event times into a homogenous Poisson process. After rescaling, Kolmogorov-Smirnov (KS) plots can be used to compare the distribution of inter-spindle-intervals to those predicted by the model. A well-fit model will produce a KS plot that closely follows a 45-degree line and stays within its significance bounds (black). KS plots that are not contained in these bounds (red) suggest lack-of-fit in the model. Use the [KSplot.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/KSplot.m) function to generate the KS plot, compute KS statistics, and output KS test results.
 
 Usage:
 ``` matlab
@@ -323,7 +323,7 @@ Usage:
 </p>
 
 ### 4. Short-Term History Contributes the Most to Statistical Deviance, Surpassing Other Factors
-The modeling framework allows us to quantitatively compare the relative contributions of these factors through deviance analysis, which is the point process equivalent of an analysis of model variance in linear regression. Use the [compute_dev_exp.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_fxn/compute_dev_exp.m) function to compute proportional deviance explained by each factor.
+The modeling framework allows us to quantitatively compare the relative contributions of these factors through deviance analysis, which is the point process equivalent of an analysis of model variance in linear regression. Use the [compute_dev_exp.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/compute_dev_exp.m) function to compute proportional deviance explained by each factor.
 
 Usage:
 ``` matlab
@@ -351,7 +351,7 @@ The contents of the "toolbox" folder is organized as follows, with key functions
 ├── example_data/  Contains example data
 ├── image_folder/  Contains all saved figures
 └── helper_function/  Contains all functions
-    ├── major_fxn/   
+    ├── major_function/   
     │         - specify_mdl.m: Model specifications
     │         - preprocessToDesignMatrix.m: Data preprocessing 
     │         - plot_hist_curve.m: History modulation curve
@@ -360,6 +360,8 @@ The contents of the "toolbox" folder is organized as follows, with key functions
     │         - KSplot.m: KS statistics, plot, and test
     │         - compute_dev_exp.m: Proportional deviance explained for each factor
     ├── TFsigma_peak_detector/ Contains the spindle detection algorithm
+    │ 
+    ├── multitaper/ The multitaper spectrogram toolbox
     │       
     └── utils/	Contains various utility functions
         
