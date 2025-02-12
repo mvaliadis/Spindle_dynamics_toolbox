@@ -37,7 +37,7 @@ Follow these steps to allow execution:
 3. Click **"Allow Anyway"**
 4. **Restart** MATLAB.
    
-Detailed instructions can be found [here](https://github.com/preraulab/multitaper_toolbox/tree/master?tab=readme-ov-file#matlab-implementation). 
+Details of multitaper spectrogram can be found [here](https://github.com/preraulab/multitaper_toolbox/tree/master?tab=readme-ov-file#matlab-implementation). 
 
  --- 
 
