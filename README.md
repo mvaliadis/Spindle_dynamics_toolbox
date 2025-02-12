@@ -288,9 +288,7 @@ Here are the function inputs and outputs:
 We observe that history modulation begins with a refractory period, during which spindles are less likely to occur. It then ramps up to a peak within an excitatory period, where spindle occurrence is most likely, before gradually decreasing back to 1, suggesting minimal modulation for events that occurred a long time ago. Here we show the Figure 2 in the paper for illustration purpose, but check the <a href="#overview-figure">Overview of the spindle dynamics</a> figure for the history curve of this example subject.
 
 ### 2. Spindle Preferential SO Phase Shifts With Sleep Depth
-Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep depth for this example subject.
-
-We show preferred phase shifts with sleep stage.
+Sleep spindles have been widely reported to preferentially occur in the cortical up state. Here we show the preferred phase shifts with sleep depth for this example subject. Use the [plot_stage_prefphase.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_stage_prefphase.m) function to visualize how preferred phase shifts with sleep stage.
 
 Usage:
 ``` matlab
@@ -313,7 +311,7 @@ Here are the function inputs and outputs:
 %                           2nd column (upper bound for each stage)
 ```
 
-We also show preferred phase shifts with SOP (continuous sleep depth).
+Use the [plot_sop_prefphase.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_sop_prefphase.m) function to visualize how preferred phase shifts with with SOP (continuous sleep depth).
 
 ``` matlab
   [phi0,sop0,sop_pp_mat] = plot_sop_prefphase(b,stats,ModelSpec)
