@@ -442,9 +442,9 @@ which should be cited for all use.
 
 ## Status
 
-All implementations are functional, but are subject to refine. 
+All implementations are functional, but are subject to refine. Next optimization, deal with perfect predictors (e.g., Wake and REM) to save runtime.
 <br/>
-Next optimization, deal with perfect predictors (e.g., Wake and REM stage) to save runtime.
+Last updated by Shuqiang Chen, 02/11/2025
 <br/>
-Created and updated by Shuqiang Chen (shuqiang@bu.edu), 01/14/2025
+For questions or suggestions please email Shuqiang Chen at shuqiang@bu.edu
 
