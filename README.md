@@ -239,11 +239,7 @@ Usage:
 
 
 ## Model Results And Visualizations
-In this section, we will walk through results part in the example script, highlighting the major functions. Again, if you would like to generate all figures with a single command, simply execute the example script:
-
-``` matlab
- > example_script;
-```
+In this section, we will walk through results part in the example script, highlighting the major functions. 
 
 ### 1. History Modulation Curve 
 The history modulation curve estimates a multiplicative modulation of the spindle event rate due to a prior event at any given time lag, which answers the question: How much more likely is there to be a spindle event, given that an event was observed X seconds ago? Using the [plot_hist_curve.m](https://github.com/preraulab/Spindle_dynamics_toolbox/blob/master/helper_function/major_function/plot_hist_curve.m) function, we can plot the history modulation curve and save history features including refractory period, excitatory period, peak time, peak height, and infraslow multiplier. 
