@@ -200,8 +200,7 @@ def preprocess_to_design_matrix(eeg, fs, stage_val, stage_time, model_spec,
     if so_covariates not in _valid_so:
         raise ValueError(f"cfg['so_covariates'] must be one of {_valid_so}, "
                          f"got '{so_covariates}'.")
-    if use_stim and ('stim_times' not in cfg or
-                     (np.asarray(cfg['stim_times']).size == 0)):
+    if use_stim and ('stim_times' not in cfg or not len(cfg.get('stim_times', []))):
         raise ValueError("cfg['stim_times'] must be provided when cfg['use_stim'] is True.")
     if spindle_source == 'precomputed' and 'res_table' not in cfg:
         raise ValueError("cfg['res_table'] must be provided when "

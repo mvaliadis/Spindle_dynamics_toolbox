@@ -97,7 +97,7 @@ def tf_peak_detection(
                              left=stage_vals[0], right=stage_vals[-1])
 
     # Artifact mask
-    if isinstance(artifact_detect, np.ndarray) or isinstance(artifact_detect, (list, tuple)):
+    if isinstance(artifact_detect, (np.ndarray, list, tuple)):
         artifacts = np.asarray(artifact_detect, dtype=bool).ravel()
     elif artifact_detect is True:
         artifacts = detect_artifacts(eeg, fs, verbose=verbose)

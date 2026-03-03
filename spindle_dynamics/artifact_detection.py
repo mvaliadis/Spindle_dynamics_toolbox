@@ -14,6 +14,7 @@ Please provide the following citation for all use:
 
 import numpy as np
 from scipy.signal import butter, sosfilt, hilbert
+from scipy.ndimage import median_filter
 
 
 def detect_artifacts(
@@ -118,7 +119,6 @@ def _band_artifacts(data, fs, hp_cutoff, crit, smooth_dur, detrend_dur,
 
     # Moving-median detrend
     detrend_samples = max(1, int(round(detrend_dur * fs)))
-    from scipy.ndimage import median_filter
     trend = median_filter(log_env, size=detrend_samples, mode='reflect')
     y_signal = log_env - trend
 

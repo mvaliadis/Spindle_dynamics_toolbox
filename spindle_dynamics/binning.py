@@ -65,6 +65,9 @@ def raw_to_bin_data(res_table, fs, binsize=0.1, hard_cutoffs=(12, 16),
     spindle_time_raw = peak_ctimes[fast_mask]
 
     # --- Build bin edges ---
+    if len(stagetime_raw) < 2:
+        raise ValueError(
+            "res_table['t'] must contain at least 2 time points to infer epoch length.")
     epoch = stagetime_raw[1] - stagetime_raw[0]
     total_time = stagetime_raw[-1] - stagetime_raw[0] + epoch
     timestamps = np.arange(0, total_time + binsize / 2, binsize)

@@ -9,6 +9,8 @@ Please provide the following citation for all use:
     PNAS, 2025, https://doi.org/10.1073/pnas.2405276121
 """
 
+import re
+
 import numpy as np
 from .multitaper import multitaper_spectrogram
 from .utils import nanzscore
@@ -146,7 +148,6 @@ def _normalize_so_power(so_power, stimes, sop_stages, time_range, norm_method):
         return so_power.copy()
 
     # Parse 'p{N}shift{S}' format, e.g. 'p2shift1234'
-    import re
     m = re.match(r'p(\d+)shift(\d*)', norm_method, re.IGNORECASE)
     if m:
         shift_ptile = float(m.group(1))
